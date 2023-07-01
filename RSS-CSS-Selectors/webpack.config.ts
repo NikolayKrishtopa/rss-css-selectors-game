@@ -1,9 +1,9 @@
 import { EnvObj } from './src/types/config';
 
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 module.exports = (env: EnvObj) => {
   const mode = env.mode || 'development';
@@ -27,12 +27,19 @@ module.exports = (env: EnvObj) => {
             port: PORT,
           }
         : undefined,
-    devtool: mode === 'development' ? 'inline-source-map' : undefined,
+    devtool: mode === 'development' ? 'eval-source-map' : undefined,
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js'],
+    },
     module: {
       rules: [
         {
           test: /\.html$/i,
           loader: 'html-loader',
+        },
+        {
+          test: /\.ts$/i,
+          loader: 'ts-loader',
         },
         {
           test: /\.js$/,
