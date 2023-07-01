@@ -3,6 +3,7 @@ class Game {
   menuBtn: HTMLButtonElement;
   closeMenuBtn: HTMLButtonElement;
   answerField: HTMLInputElement;
+  enterBtn: HTMLButtonElement;
 
   constructor() {
     this.menu = document.querySelector(
@@ -15,6 +16,10 @@ class Game {
       '#closeMenuBtn'
     ) as HTMLButtonElement;
     this.answerField = document.querySelector('#answer') as HTMLInputElement;
+    this.enterBtn = document.querySelector(
+      '.code__enter-btn'
+    ) as HTMLButtonElement;
+
     this.initiate();
   }
 
@@ -33,10 +38,22 @@ class Game {
     }
   };
 
+  checkAnswer = () => {
+    console.log('Ну норм');
+  };
+
+  handleClickEnterKey = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      this.checkAnswer();
+    }
+  };
+
   setListeners() {
     this.menuBtn.addEventListener('click', this.toggleMenu);
     this.closeMenuBtn.addEventListener('click', this.toggleMenu);
     this.answerField.addEventListener('input', this.checkAnswerBlind);
+    this.enterBtn.addEventListener('click', this.checkAnswer);
+    window.addEventListener('keydown', this.handleClickEnterKey);
   }
 
   initiate = () => {

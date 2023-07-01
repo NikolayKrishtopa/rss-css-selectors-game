@@ -76,6 +76,16 @@
 .code__row {
   display: grid;
   grid-template-columns: 30px 1fr;
+  position: relative;
+}
+
+.code__enter-btn {
+  @include clickable;
+  background-color: yellowgreen;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .code__row-num {
