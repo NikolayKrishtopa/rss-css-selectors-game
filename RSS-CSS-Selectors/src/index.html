@@ -7,5 +7,196 @@
     <title>RSS-CSS-Selectors</title>
     <link rel="icon" href="./vendor/favicon.png" />
   </head>
-  <body class="root"></body>
+  <body class="root">
+    <div class="game">
+      <div class="header">
+        <h1 class="header__title">CSS dinner</h1>
+      </div>
+      <h2 class="game__task-annotation">
+        Select every apple that's next to a plate
+      </h2>
+      <div class="game__table"></div>
+      <div class="game__code-block">
+        <div class="code">
+          <div class="code__heading">
+            <h3 class="code__title">CSS editor</h3>
+            <p class="code__filename">style.css</p>
+          </div>
+          <div class="code__field">
+            <div class="code__row">
+              <p class="code__row-num">1</p>
+              <input
+                class="code__row-text code__row-text_style_blind"
+                id="answer"
+                placeholder="type your selector here"
+              />
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">2</p>
+              <p class="code__row-text">{</p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">3</p>
+              <p class="code__row-text">/* Styles would go here. */</p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">4</p>
+              <p class="code__row-text">}</p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">5</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">6</p>
+              <p class="code__row-text">/*</p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">7</p>
+              <p class="code__row-text">Type a number to skip a level</p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">8</p>
+              <p class="code__row-text">Ex. - 5 for level 5</p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">9</p>
+              <p class="code__row-text">*/</p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">10</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">11</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">12</p>
+              <p class="code__row-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="code">
+          <div class="code__heading">
+            <h3 class="code__title">HTML viewer</h3>
+            <p class="code__filename">style.css</p>
+          </div>
+          <div class="code__field">
+            <div class="code__row">
+              <p class="code__row-num">1</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">2</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">3</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">4</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">5</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">6</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">7</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">8</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">9</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">10</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">11</p>
+              <p class="code__row-text"></p>
+            </div>
+            <div class="code__row">
+              <p class="code__row-num">12</p>
+              <p class="code__row-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <p class="footer__text">Made by @Nikolay_Krishtopa — come say hi!</p>
+        <p class="footer__text">
+          Have feedback or questions? Please file an isssue on the
+          <a href="#" class="footer__link">Github repo.</a>
+        </p>
+      </footer>
+    </div>
+    <div class="info">
+      <div class="info__burger-menu">
+        <div class="info__heading">
+          <h3 class="info__title">Choose a level</h3>
+          <button class="info__nav-btn" id="closeMenuBtn">
+            <img
+              src="./assets/img/close_icon.svg"
+              alt="Close menu."
+              class="info__icon info__icon_size_l"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="info__heading">
+        <h3 class="info__title">
+          Level <span id="curLvl"></span> of <span id="toalLvls"></span>
+        </h3>
+        <img
+          src="./assets/img/check_icon.svg"
+          alt="check"
+          class="info__icon info__icon_size_l"
+        />
+        <nav class="info__nav">
+          <button class="info__nav-btn" id="prevTask">
+            <img
+              src="./assets/img/left_icon.svg"
+              alt="Previous task button."
+              class="info__icon info__icon_size_l"
+            />
+          </button>
+          <button class="info__nav-btn" id="nextTask">
+            <img
+              src="./assets/img/right_icon.svg"
+              alt="Next task button."
+              class="info__icon info__icon_size_l"
+            />
+          </button>
+          <button class="info__nav-btn" id="burgerMenu">
+            <img
+              src="./assets/img/menu_icon.svg"
+              alt="Menu button."
+              class="info__icon info__icon_size_l"
+            />
+          </button>
+        </nav>
+      </div>
+      <p class="info__text">
+        Adjacent Sibling Selector Select an element that directly follows
+        another element A + B This selects all B elements that directly follow
+        A. Elements that follow one another are called siblings. They're on the
+        same level, or depth. In the HTML markup for this level, elements that
+        have the same indentation are siblings. Examples p + .intro selects
+        every element with class="intro" that directly follows a p div + a
+        selects every a element that directly follows a div
+      </p>
+    </div>
+  </body>
 </html>

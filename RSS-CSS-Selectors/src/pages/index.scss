@@ -1,12 +1,195 @@
 @import '../styles/reset.scss';
 @import '../styles/globalVars.scss';
 @import '../vendor/fonts.css';
-@import '../styles/blocks/field.scss';
-@import '../styles/blocks/header.scss';
-@import '../styles/blocks/root.scss';
-@import '../styles/blocks/nav-panel.scss';
-@import '../styles/blocks/popup.scss';
-@import '../styles/blocks/content.scss';
-@import '../styles/themes/darkTheme.scss';
-@import '../styles/themes/defaultTheme.scss';
 
+.root {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 100%;
+  margin: auto;
+  color: $font-color-white;
+}
+
+.game {
+  padding: 0 40px 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: $lighter;
+  gap: 40px;
+}
+
+.header {
+  padding: 30px 0;
+}
+
+.header__title {
+  font-size: 22px;
+}
+
+.game__task-annotation {
+  font-size: 70px;
+  line-height: 1;
+  text-align: center;
+}
+
+.game__table {
+  width: 100%;
+  min-height: 200px;
+  background-color: $background-table;
+}
+
+.game__code-block {
+  background-color: $dark;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.code {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid grey;
+}
+
+.code__heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: $lighter;
+}
+
+.code__title {
+  font-size: 18px;
+}
+
+.code__filename {
+  font-size: 22px;
+}
+
+.code__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.code__row {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+}
+
+.code__row-num {
+  background-color: $light;
+  font-size: 22px;
+  color: $lighter;
+  text-align: center;
+  padding: 5px;
+}
+
+.code__row-text {
+  font-size: 22px;
+  padding: 0 20px;
+  outline: none;
+}
+
+@keyframes blind {
+  from {
+    background-color: rgb(154, 211, 211);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+.code__row-text_style_blind {
+  position: relative;
+  animation: 1s infinite alternate blind;
+}
+
+.info {
+  background-color: $dark;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 50px;
+}
+
+.info__burger-menu {
+  position: absolute;
+  padding: 20px 30px;
+  flex-direction: column;
+  gap: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: $dark;
+  z-index: 1;
+  display: none;
+}
+
+.info__burger-menu_state_active {
+  display: flex;
+}
+
+.info__burger-menu-item {
+  display: grid;
+  grid-template-columns: 24px 24px 1fr;
+}
+.info__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info__nav {
+  display: flex;
+  gap: 10px;
+}
+
+.info__nav-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.info__title {
+  font-size: 48px;
+}
+
+.info__icon {
+  opacity: 50%;
+}
+.info__icon_size_l {
+  transform: scale(2);
+  opacity: 50%;
+}
+
+.info__nav-btn {
+  @include clickable;
+  width: 48px;
+  height: 48px;
+}
+
+.info__text {
+  font-size: 22px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.footer__text {
+  font-size: 24px;
+}
+
+.footer__link {
+  text-decoration: underline;
+  color: $font-color-white;
+}
+
+#answer {
+  color: white;
+}
