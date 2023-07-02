@@ -23,6 +23,7 @@ class Game {
   incTaskBtn: HTMLButtonElement;
   passed: Array<number>;
   icon: HTMLImageElement;
+  taskDescField: HTMLElement;
 
   constructor(tasks: Tasks) {
     this.tasks = tasks.map((t) => ({ ...t, isPassed: false }));
@@ -64,6 +65,7 @@ class Game {
     ) as HTMLButtonElement;
     this.passed = [];
     this.icon = document.querySelector('#taskStatusCheck') as HTMLImageElement;
+    this.taskDescField = document.querySelector('.info__text') as HTMLElement;
 
     this.initiate();
   }
@@ -149,6 +151,7 @@ class Game {
     this.curLvlArea.textContent = this.curTaskNum.toString();
     this.taskDescr.textContent = this.curTaskItem.title;
     this.htmlSyntCodeArea.textContent = this.curTaskItem.syntheticCode;
+    this.taskDescField.textContent = this.curTaskItem.description;
     if (this.passed.includes(this.curTaskItem.id)) {
       this.icon.src = passedIconL;
     } else {

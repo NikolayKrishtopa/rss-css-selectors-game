@@ -4,6 +4,7 @@ export type Task = {
   htmlCode: string;
   syntheticCode: string;
   correct: Array<string>;
+  description: string;
 };
 
 export type Tasks = Array<Task>;
