@@ -118,7 +118,7 @@ class Game {
   checkAnswer = () => {
     const answer = this.answerField.value;
     const possiblyTaskNum = Number(answer);
-    if (possiblyTaskNum > 0 && possiblyTaskNum < this.tasks.length) {
+    if (possiblyTaskNum > 0 && possiblyTaskNum <= this.tasks.length) {
       this.switchTask(possiblyTaskNum);
       this.resetAnswer();
     }
@@ -148,7 +148,7 @@ class Game {
     this.totalLvlQtyArea.textContent = this.tasks.length.toString();
     this.curLvlArea.textContent = this.curTaskNum.toString();
     this.taskDescr.textContent = this.curTaskItem.title;
-    // this.htmlSyntCodeArea.textContent = this.curTaskItem.syntheticCode;
+    this.htmlSyntCodeArea.textContent = this.curTaskItem.syntheticCode;
     if (this.passed.includes(this.curTaskItem.id)) {
       this.icon.src = passedIconL;
     } else {
@@ -162,6 +162,7 @@ class Game {
     this.renderMenu();
     this.renderTask();
     this.resetAnswer();
+    this.checkAnswerBlind();
   };
 
   switchNextTask = () => {

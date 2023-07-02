@@ -36,6 +36,12 @@
   width: 100%;
   min-height: 200px;
   background-color: $background-table;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: black;
+  font-size: 32px;
 }
 
 .game__code-block {
