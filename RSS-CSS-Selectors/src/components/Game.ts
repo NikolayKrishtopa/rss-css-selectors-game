@@ -127,9 +127,22 @@ class Game {
     if (this.curTaskItem.correct.includes(answer)) {
       if (!this.passed.includes(this.curTaskItem.id)) {
         this.passed.push(this.curTaskItem.id);
+        this.table.querySelectorAll('.desired').forEach((e) => {
+          const timeout = setTimeout(() => {
+            this.switchNextTask();
+            clearTimeout(timeout);
+          }, 500);
+          e.classList.add('desired_state_correct');
+        });
       }
-      this.switchNextTask();
-      console.log(this.passed);
+    } else {
+      this.table.querySelectorAll('.desired').forEach((e) => {
+        e.classList.add('desired_state_wrong');
+        const timeout = setTimeout(() => {
+          e.classList.remove('desired_state_wrong');
+          clearTimeout(timeout);
+        }, 500);
+      });
     }
   };
 

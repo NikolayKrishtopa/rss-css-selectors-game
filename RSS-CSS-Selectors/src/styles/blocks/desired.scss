@@ -10,6 +10,35 @@
   }
 }
 
+@keyframes wrong {
+  0% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes correct {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-1000px);
+  }
+}
+
 .desired {
   animation: 1s infinite alternate pulse;
+}
+
+.desired_state_wrong {
+  animation: 0.05s infinite alternate wrong;
+}
+
+.desired_state_correct {
+  animation: 0.5s alternate correct;
 }
