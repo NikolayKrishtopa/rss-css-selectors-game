@@ -24,6 +24,7 @@ class Game {
   passed: Array<number>;
   icon: HTMLImageElement;
   taskDescField: HTMLElement;
+  resetBtn: HTMLButtonElement;
 
   constructor(tasks: Tasks) {
     this.tasks = tasks.map((t) => ({ ...t, isPassed: false }));
@@ -66,6 +67,9 @@ class Game {
     this.passed = [];
     this.icon = document.querySelector('#taskStatusCheck') as HTMLImageElement;
     this.taskDescField = document.querySelector('.info__text') as HTMLElement;
+    this.resetBtn = document.querySelector(
+      '.info__reset-btn'
+    ) as HTMLButtonElement;
 
     this.initiate();
   }
@@ -193,6 +197,13 @@ class Game {
     }
   };
 
+  reset = () => {
+    console.log('reset');
+
+    this.passed = [];
+    this.switchTask(1);
+  };
+
   setListeners() {
     this.menuBtn.addEventListener('click', this.toggleMenu);
     this.closeMenuBtn.addEventListener('click', this.toggleMenu);
@@ -200,6 +211,7 @@ class Game {
     this.enterBtn.addEventListener('click', this.checkAnswer);
     this.incTaskBtn.addEventListener('click', this.switchNextTask);
     this.decTaskBtn.addEventListener('click', this.switchPrevTask);
+    this.resetBtn.addEventListener('click', this.reset);
     window.addEventListener('keydown', this.handleClickEnterKey);
   }
 

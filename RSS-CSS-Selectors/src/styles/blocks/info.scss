@@ -89,3 +89,18 @@
 .info__text {
   font-size: 22px;
 }
+
+.info__reset-btn {
+  @include clickable;
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+  right: 100px;
+  justify-self: end;
+  padding: 10px;
+  font-size: 24px;
+  background-color: rgb(105, 198, 167);
+  color: $lighter;
+  z-index: 3;
+  border-radius: 10px;
+}

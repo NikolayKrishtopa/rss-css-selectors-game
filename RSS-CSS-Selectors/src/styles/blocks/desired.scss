@@ -12,13 +12,13 @@
 
 @keyframes wrong {
   0% {
-    transform: translateY(20px);
+    transform: translateY(5px);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-5px);
   }
   100% {
-    transform: translateY(20px);
+    transform: translateY(5px);
   }
 }
 
@@ -36,7 +36,7 @@
 }
 
 .desired_state_wrong {
-  animation: 0.05s infinite alternate wrong;
+  animation: 0.1s infinite alternate wrong;
 }
 
 .desired_state_correct {

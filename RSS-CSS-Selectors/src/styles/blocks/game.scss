@@ -4,6 +4,24 @@
   flex-direction: column;
   background-color: $lighter;
   gap: 40px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white); /* цвет зоны отслеживания */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #666262; /* цвет бегунка */
+  border-radius: 5px; /* округлось бегунка */
+  border: none; /* отступ вокруг бегунка */
+}
+
+::-webkit-scrollbar {
+  width: 10px; /* ширина всей полосы прокрутки */
+  height: 10px;
 }
 
 .game__task-annotation {
