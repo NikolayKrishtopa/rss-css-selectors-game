@@ -64,7 +64,6 @@ class Game {
     ) as HTMLButtonElement;
     this.passed = [];
     this.icon = document.querySelector('#taskStatusCheck') as HTMLImageElement;
-    console.log(this.htmlSyntCodeArea);
 
     this.initiate();
   }
@@ -110,9 +109,9 @@ class Game {
 
   checkAnswerBlind = () => {
     if (this.answerField.value.length > 0) {
-      this.answerField.classList.remove('code__row-text_style_blind');
+      this.answerField.classList.remove('code__input_style_blind');
     } else {
-      this.answerField.classList.add('code__row-text_style_blind');
+      this.answerField.classList.add('code__input_style_blind');
     }
   };
 
@@ -168,8 +167,6 @@ class Game {
   switchNextTask = () => {
     if (this.curTaskNum < this.tasks.length) {
       this.switchTask(this.curTaskNum + 1);
-      console.log(this.curTaskNum);
-      console.log(this.tasks.length);
     }
   };
 
