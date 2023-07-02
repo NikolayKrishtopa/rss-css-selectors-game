@@ -3,7 +3,7 @@ export type Task = {
   title: string;
   htmlCode: string;
   syntheticCode: string;
-  correct: string;
+  correct: Array<string>;
 };
 
 export type Tasks = Array<Task>;

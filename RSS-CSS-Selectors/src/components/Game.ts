@@ -1,4 +1,7 @@
 import { Task, Tasks } from '../types/models';
+import passedIcon from '../assets/img/check_icon_no_border_green.svg';
+import passedIconL from '../assets/img/check_icon_green.svg';
+import basicIconL from '../assets/img/check_icon.svg';
 
 class Game {
   menu: HTMLElement;
@@ -18,6 +21,8 @@ class Game {
   taskDescr: HTMLElement;
   decTaskBtn: HTMLButtonElement;
   incTaskBtn: HTMLButtonElement;
+  passed: Array<number>;
+  icon: HTMLImageElement;
 
   constructor(tasks: Tasks) {
     this.tasks = tasks.map((t) => ({ ...t, isPassed: false }));
@@ -57,6 +62,9 @@ class Game {
     this.decTaskBtn = document.querySelector(
       '#decTaskBtn'
     ) as HTMLButtonElement;
+    this.passed = [];
+    this.icon = document.querySelector('#taskStatusCheck') as HTMLImageElement;
+    console.log(this.htmlSyntCodeArea);
 
     this.initiate();
   }
@@ -93,6 +101,10 @@ class Game {
     menuItemElement.addEventListener('click', () => {
       this.switchTask(item.id);
     });
+    const icon = menuItemElement.querySelector('img');
+    if (icon && this.passed.includes(item.id)) {
+      icon.src = passedIcon;
+    }
     return menuItemElement;
   };
 
@@ -105,10 +117,18 @@ class Game {
   };
 
   checkAnswer = () => {
-    const possiblyTaskNum = Number(this.answerField.value);
+    const answer = this.answerField.value;
+    const possiblyTaskNum = Number(answer);
     if (possiblyTaskNum > 0 && possiblyTaskNum < this.tasks.length) {
       this.switchTask(possiblyTaskNum);
       this.resetAnswer();
+    }
+    if (this.curTaskItem.correct.includes(answer)) {
+      if (!this.passed.includes(this.curTaskItem.id)) {
+        this.passed.push(this.curTaskItem.id);
+      }
+      this.switchNextTask();
+      console.log(this.passed);
     }
   };
 
@@ -130,6 +150,11 @@ class Game {
     this.curLvlArea.textContent = this.curTaskNum.toString();
     this.taskDescr.textContent = this.curTaskItem.title;
     // this.htmlSyntCodeArea.textContent = this.curTaskItem.syntheticCode;
+    if (this.passed.includes(this.curTaskItem.id)) {
+      this.icon.src = passedIconL;
+    } else {
+      this.icon.src = basicIconL;
+    }
   };
 
   switchTask = (taskNum: number) => {
@@ -137,6 +162,7 @@ class Game {
     this.switchTaskItem();
     this.renderMenu();
     this.renderTask();
+    this.resetAnswer();
   };
 
   switchNextTask = () => {
@@ -150,7 +176,6 @@ class Game {
   switchPrevTask = () => {
     if (this.curTaskNum > 1) {
       this.switchTask(this.curTaskNum - 1);
-      console.log('I work');
     }
   };
 

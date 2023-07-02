@@ -9,7 +9,7 @@ const TASKS: Tasks = [
 		<plate>
 		  <apple class='apple'/>
 		</plate>`,
-    correct: '.apple',
+    correct: ['.apple', 'apple'],
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const TASKS: Tasks = [
 		<plate>
 		  <cucumber class='cucumber'/>
 		</plate>`,
-    correct: '.cucumber',
+    correct: ['.cucumber'],
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const TASKS: Tasks = [
 		  <apple class='big'/>
 		  <apple class='big'/>
 		</plate>`,
-    correct: 'apple .small',
+    correct: ['apple .small'],
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const TASKS: Tasks = [
 		  <cucumber class='big'/>
 		  <cucumber class='big'/>
 		</plate>`,
-    correct: 'cucumber .small',
+    correct: ['cucumber .small'],
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ const TASKS: Tasks = [
 		  <cucumber class='big'/>
 		  <cucumber class='big'/>
 		</plate>`,
-    correct: 'plate',
+    correct: ['plate'],
   },
   {
     id: 6,
@@ -67,7 +67,7 @@ const TASKS: Tasks = [
 		  <cucumber class='big'/>
 		  <cucumber class='big'/>
 		</plate>`,
-    correct: 'plate',
+    correct: ['plate'],
   },
 ];
 
