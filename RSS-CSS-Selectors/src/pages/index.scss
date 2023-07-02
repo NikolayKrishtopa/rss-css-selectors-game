@@ -147,6 +147,19 @@
   display: grid;
   grid-template-columns: 24px 24px 1fr;
 }
+
+.info__burger-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.info__burger-menu-item-num {
+  font-size: 24px;
+}
+.info__burger-menu-item-title {
+  font-size: 24px;
+}
+
 .info__heading {
   display: flex;
   justify-content: space-between;
