@@ -20,7 +20,7 @@ class Game {
   incTaskBtn: HTMLButtonElement;
 
   constructor(tasks: Tasks) {
-    this.tasks = tasks;
+    this.tasks = tasks.map((t) => ({ ...t, isPassed: false }));
     this.taskDescr = document.querySelector(
       '.game__task-annotation'
     ) as HTMLElement;
@@ -105,8 +105,14 @@ class Game {
   };
 
   checkAnswer = () => {
-    console.log('Ну норм');
+    const possiblyTaskNum = Number(this.answerField.value);
+    if (possiblyTaskNum > 0 && possiblyTaskNum < this.tasks.length) {
+      this.switchTask(possiblyTaskNum);
+      this.resetAnswer();
+    }
   };
+
+  resetAnswer = () => (this.answerField.value = '');
 
   handleClickEnterKey = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
