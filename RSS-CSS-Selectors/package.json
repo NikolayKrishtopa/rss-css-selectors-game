@@ -54,6 +54,7 @@
     "webpack-dev-server": "^4.13.1"
   },
   "dependencies": {
+    "highlight.js": "^11.8.0",
     "node-sass": "^8.0.0"
   }
 }
