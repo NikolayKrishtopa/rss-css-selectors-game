@@ -4,112 +4,160 @@ const TASKS: Tasks = [
   {
     id: 1,
     title: 'Find apple',
-    htmlCode: '<div><p>Пошел нахуй отсюда, мальчик</p></div>',
+    htmlCode: `   
+          <div class="pickle"></div>
+          <div class="orange"></div>
+          <div class="apple desired"></div>
+`,
     syntheticCode: `
-		<plate>
-		  <apple class='apple'/>
-		</plate>`,
-    correct: ['.apple', 'apple'],
-    description: `Adjacent Sibling Selector Select an element that directly follows
-        another element A + B This selects all B elements that directly follow
-        A. Elements that follow one another are called siblings. They're on the
-        same level, or depth. In the HTML markup for this level, elements that
-        have the same indentation are siblings. Examples p + .intro selects
-        every element with class="intro" that directly follows a p div + a
-        selects every a element that directly follows a div`,
+    <div class = "table">
+    <pickle/>
+    <orange/>
+		  <apple/>
+      </div>
+		`,
+    correct: ['apple'],
+    description: `You task here to find the apple among the other fruits`,
   },
   {
     id: 2,
-    title: 'Find cucumbers',
-    htmlCode: '<div><p>Ищи огурец, пидр</p></div>',
+    title: 'Find all plates',
+    htmlCode: `       <div class="plate desired"></div>
+        <div class="plate desired"></div>
+        `,
     syntheticCode: `
-		<plate>
-		  <cucumber class='cucumber'/>
-		</plate>`,
-    correct: ['.cucumber'],
-    description: `Adjacent Sibling Selector Select an element that directly follows
-        another element A + B This selects all B elements that directly follow
-        A. Elements that follow one another are called siblings. They're on the
-        same level, or depth. In the HTML markup for this level, elements that
-        have the same indentation are siblings. Examples p + .intro selects
-        every element with class="intro" that directly follows a p div + a
-        selects every a element that directly follows a div`,
+        <div class = "table">
+		<plate/>
+		</plate>
+    </table>`,
+    correct: ['plate'],
+    description: `You task here to apply to all the plate on the table`,
   },
   {
     id: 3,
-    title: 'Find small Apple',
-    htmlCode: '<div><p>Где мелкое яблоко?</p></div>',
+    title: 'Find Orange on the plate',
+    htmlCode: `
+    <div class="orange"></div>
+           <div class="plate">
+          <div class="apple apple_small"></div>
+        </div>
+        <div class="plate">
+          <div class="orange desired"></div>
+        </div>
+        <div class="plate plate_style_blue-bordered">
+          <div class="pickle"></div>
+        </div>
+    `,
     syntheticCode: `
-		<plate>
-		  <apple class='small'/>
-		  <apple class='big'/>
-		  <apple class='big'/>
-		</plate>`,
-    correct: ['apple .small'],
-    description: `Adjacent Sibling Selector Select an element that directly follows
-        another element A + B This selects all B elements that directly follow
-        A. Elements that follow one another are called siblings. They're on the
-        same level, or depth. In the HTML markup for this level, elements that
-        have the same indentation are siblings. Examples p + .intro selects
-        every element with class="intro" that directly follows a p div + a
-        selects every a element that directly follows a div`,
+		    <div class = "table">
+        <orange/>
+		<plate><orange/></plate>
+		<plate class="fancy"><pickle/></plate>
+    </table>`,
+    correct: ['plate orange', 'plate > orange'],
+    description: `You need to find an orange located on the plate`,
   },
   {
     id: 4,
-    title: 'Find small Cucumber',
-    htmlCode: '<div><p>Где мелкий огурец?</p></div>',
+    title: 'Select the pickle on the fancy plate',
+    htmlCode: `
+    <div class="bento">
+     <div class="pickle"></div>
+     </div>
+         <div class="plate plate_style_blue-bordered">
+          <div class="apple"></div>
+        </div>
+        <div class="plate">
+          <div class="pickle"></div>
+        </div>
+        <div class="plate plate_style_blue-bordered">
+          <div class="pickle desired"></div>
+        </div>
+      
+    `,
     syntheticCode: `
-		<plate>
-		  <cucumber class='small'/>
-		  <cucumber class='big'/>
-		  <cucumber class='big'/>
-		</plate>`,
-    correct: ['cucumber .small'],
-    description: `Adjacent Sibling Selector Select an element that directly follows
-        another element A + B This selects all B elements that directly follow
-        A. Elements that follow one another are called siblings. They're on the
-        same level, or depth. In the HTML markup for this level, elements that
-        have the same indentation are siblings. Examples p + .intro selects
-        every element with class="intro" that directly follows a p div + a
-        selects every a element that directly follows a div`,
+     <div class = "table">
+		  <bento><pickle/></bento>
+		  <plate class="fancy"><apple/></plate>
+		  <plate><pickle/></plate>
+		  <plate class="fancy"><pickle/></plate>
+	
+      </div>`,
+    correct: ['.fancy pickle'],
+    description: `Your task is to choose a pickle on the fancy plate`,
   },
   {
     id: 5,
-    title: 'Find plate',
-    htmlCode: '<div><p>Где тарелка?</p></div>',
+    title: 'Find small apples',
+    htmlCode: `
+    <div class="bento">
+     <div class="apple apple_small desired"></div>
+     </div>
+         <div class="plate plate_style_blue-bordered">
+          <div class="orange"></div>
+        </div>
+        <div class="plate">
+          <div class="apple apple_small desired"></div>
+        </div>
+        <div class="plate plate_style_blue-bordered">
+          <div class="pickle "></div>
+        </div>
+    `,
     syntheticCode: `
-		<plate>
-		  <cucumber class='small'/>
-		  <cucumber class='big'/>
-		  <cucumber class='big'/>
-		</plate>`,
-    correct: ['plate'],
-    description: `Adjacent Sibling Selector Select an element that directly follows
-        another element A + B This selects all B elements that directly follow
-        A. Elements that follow one another are called siblings. They're on the
-        same level, or depth. In the HTML markup for this level, elements that
-        have the same indentation are siblings. Examples p + .intro selects
-        every element with class="intro" that directly follows a p div + a
-        selects every a element that directly follows a div`,
+     <div class = "table">
+		  <bento><apple class="small"/></bento>
+		  <plate class="fancy"><orange/></plate>
+		  <plate><apple class="small"/></plate>
+		  <plate class="fancy"><pickle/></plate>
+	
+      </div>`,
+    correct: ['.small', 'apple.small', 'apple .small', 'apple > .small'],
+    description: `find and choose all the small apples located anywhere`,
   },
   {
     id: 6,
-    title: 'Find plate',
-    htmlCode: '<div><p>Где тарелка?</p></div>',
+    title: 'Find the middle pickle',
+    htmlCode: `
+     <div class="plate">
+          <div class="pickle "></div>
+          <div class="pickle desired"></div>
+          <div class="pickle "></div>
+        </div>
+    `,
     syntheticCode: `
-		<plate>
-		  <cucumber class='small'/>
-		  <cucumber class='big'/>
-		  <cucumber class='big'/>
-		</plate>`,
-    correct: ['plate'],
-    description: `Adjacent Sibling Selector Select an element that directly follows
-        another element A + B This selects all B elements that directly follow
-        A. Elements that follow one another are called siblings. They're on the
-        same level, or depth. In the HTML markup for this level, elements that
-        have the same indentation are siblings. Examples p + .intro selects
-        every element with class="intro" that directly follows a p div + a
-        selects every a element that directly follows a div`,
+     <div class = "table">
+		  <plate><pickle/><pickle/><pickle/></plate>
+      </div>`,
+    correct: [
+      'plate:nth-child(2)',
+      'pickle:nth-of-type(2)',
+      'pickle:nth-of-type(2n)',
+    ],
+    description: `Find the middle pickle`,
+  },
+  {
+    id: 7,
+    title: 'Choose the small oranges on the plate',
+    htmlCode: `
+    <div class="orange orange_small"></div>
+        <div class="plate">
+        <div class="orange orange_small desired"></div>
+        </div>
+        <div class="apple"></div>
+          <div class="plate plate_style_blue-bordered">
+        <div class="orange orange_small desired"></div>
+        </div>
+        
+    `,
+    syntheticCode: `
+     <div class = "table">
+      <orange class="small"/>
+      <plate><orange class="small"/></plate>
+      <apple/>
+      <plate class="fancy"><orange class="small"/></plate>
+      </div>`,
+    correct: ['plate .small', 'plate.small', 'plate > .small'],
+    description: ``,
   },
 ];
 
