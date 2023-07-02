@@ -1,0 +1,89 @@
+@keyframes blind {
+  from {
+    background-color: rgb(154, 211, 211);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+.code {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid grey;
+}
+
+.code__heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: $lighter;
+}
+
+.code__title {
+  font-size: 18px;
+}
+
+.code__filename {
+  font-size: 22px;
+}
+
+.code__canvas {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  position: relative;
+}
+
+.code__row-numeration {
+  display: flex;
+  flex-direction: column;
+}
+
+.code__enter-btn {
+  @include clickable;
+  background-color: yellowgreen;
+  padding: 10px;
+  min-width: 70px;
+}
+
+.code__row-num {
+  background-color: $light;
+  font-size: 22px;
+  line-height: 1;
+  color: $lighter;
+  text-align: center;
+  padding: 5px;
+}
+
+.code__field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.code__field {
+  width: 100%;
+  font-size: 22px;
+  line-height: 32px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.code__input {
+  width: 100%;
+  font-size: 22px;
+  padding: 5px 20px;
+  outline: none;
+  color: $font-color-white;
+}
+.code__input_style_blind {
+  position: relative;
+  animation: 1s infinite alternate blind;
+}
+
+.code__input-wrapper {
+  display: flex;
+}

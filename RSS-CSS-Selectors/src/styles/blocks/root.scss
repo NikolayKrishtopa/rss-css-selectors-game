@@ -1,11 +1,7 @@
-.root{
-	margin: 0;
-	display: flex;
-	width: 100%;
-	align-items: center;
-	justify-content: flex-start;
-	flex-direction: column;
-	position: relative;
-	min-height: 100vh;
-	background-color: var(--background-main);
+.root {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 100%;
+  margin: auto;
+  color: $font-color-white;
 }

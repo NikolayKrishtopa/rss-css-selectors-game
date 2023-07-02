@@ -1,0 +1,91 @@
+.info {
+  background-color: $dark;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 50px;
+}
+
+.info__burger-menu {
+  position: absolute;
+  padding: 30px;
+  flex-direction: column;
+  gap: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: $dark;
+  z-index: 1;
+  display: none;
+}
+
+.info__burger-menu_state_active {
+  display: flex;
+}
+
+.info__burger-menu-item {
+  display: grid;
+  grid-template-columns: 24px 24px 1fr;
+}
+
+.info__burger-menu-item {
+  @include clickable;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+.info__burger-menu-item_current {
+  pointer-events: none;
+  background-color: $lighter;
+}
+.info__burger-menu-item-num {
+  font-size: 24px;
+}
+
+.info__menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.info__burger-menu-item-title {
+  font-size: 24px;
+}
+
+.info__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info__nav {
+  display: flex;
+  gap: 20px;
+}
+
+.info__nav-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.info__title {
+  font-size: 36px;
+}
+
+.info__icon {
+  opacity: 50%;
+}
+.info__icon_size_l {
+  transform: scale(2);
+  opacity: 50%;
+}
+
+.info__nav-btn {
+  @include clickable;
+}
+
+.info__text {
+  font-size: 22px;
+}
