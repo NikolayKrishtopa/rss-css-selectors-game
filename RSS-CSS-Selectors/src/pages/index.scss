@@ -149,12 +149,24 @@
 }
 
 .info__burger-menu-item {
+  @include clickable;
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px;
+}
+.info__burger-menu-item_current {
+  pointer-events: none;
+  background-color: $lighter;
 }
 .info__burger-menu-item-num {
   font-size: 24px;
+}
+
+.info__menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .info__burger-menu-item-title {
   font-size: 24px;

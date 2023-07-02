@@ -1,7 +1,8 @@
 import { Task, Tasks } from '../types/models';
 
 class Game {
-  menu: HTMLButtonElement;
+  menu: HTMLElement;
+  menuContainer: HTMLDivElement;
   menuBtn: HTMLButtonElement;
   closeMenuBtn: HTMLButtonElement;
   answerField: HTMLInputElement;
@@ -14,12 +15,19 @@ class Game {
   curLvlArea: HTMLSpanElement;
   totalLvlQtyArea: HTMLSpanElement;
   menuItemTemmplate: HTMLTemplateElement;
+  taskDescr: HTMLElement;
+  decTaskBtn: HTMLButtonElement;
+  incTaskBtn: HTMLButtonElement;
 
   constructor(tasks: Tasks) {
     this.tasks = tasks;
-    this.menu = document.querySelector(
-      '.info__burger-menu'
-    ) as HTMLButtonElement;
+    this.taskDescr = document.querySelector(
+      '.game__task-annotation'
+    ) as HTMLElement;
+    this.menu = document.querySelector('.info__burger-menu') as HTMLElement;
+    this.menuContainer = document.querySelector(
+      '.info__menu-container'
+    ) as HTMLDivElement;
     this.menuBtn = document.querySelector(
       '#burgerMenuBtn'
     ) as HTMLButtonElement;
@@ -43,14 +51,23 @@ class Game {
     this.menuItemTemmplate = document.querySelector(
       '#menuItemTemmplate'
     ) as HTMLTemplateElement;
+    this.incTaskBtn = document.querySelector(
+      '#incTaskBtn'
+    ) as HTMLButtonElement;
+    this.decTaskBtn = document.querySelector(
+      '#decTaskBtn'
+    ) as HTMLButtonElement;
 
     this.initiate();
   }
 
   toggleMenu = () => {
-    this.menu.classList.contains('info__burger-menu_state_active')
-      ? this.menu.classList.remove('info__burger-menu_state_active')
-      : this.menu.classList.add('info__burger-menu_state_active');
+    if (this.menu.classList.contains('info__burger-menu_state_active')) {
+      this.menu.classList.remove('info__burger-menu_state_active');
+    } else {
+      this.renderMenu;
+      this.menu.classList.add('info__burger-menu_state_active');
+    }
   };
 
   createMenuItem = (item: Task) => {
@@ -70,6 +87,12 @@ class Game {
       title.textContent = item.title;
       num.textContent = item.id.toString();
     }
+    if (item.id === this.curTaskNum) {
+      menuItemElement.classList.add('info__burger-menu-item_current');
+    }
+    menuItemElement.addEventListener('click', () => {
+      this.switchTask(item.id);
+    });
     return menuItemElement;
   };
 
@@ -99,7 +122,15 @@ class Game {
     this.table.innerHTML = this.curTaskItem.htmlCode;
     this.totalLvlQtyArea.textContent = this.tasks.length.toString();
     this.curLvlArea.textContent = this.curTaskNum.toString();
+    this.taskDescr.textContent = this.curTaskItem.title;
     // this.htmlSyntCodeArea.textContent = this.curTaskItem.syntheticCode;
+  };
+
+  switchTask = (taskNum: number) => {
+    this.curTaskNum = taskNum;
+    this.switchTaskItem();
+    this.renderMenu();
+    this.renderTask();
   };
 
   setListeners() {
@@ -107,15 +138,29 @@ class Game {
     this.closeMenuBtn.addEventListener('click', this.toggleMenu);
     this.answerField.addEventListener('input', this.checkAnswerBlind);
     this.enterBtn.addEventListener('click', this.checkAnswer);
+    this.incTaskBtn.addEventListener('click', () => {
+      if (this.curTaskNum < this.tasks.length) {
+        this.switchTask(this.curTaskNum + 1);
+        console.log(this.curTaskNum);
+        console.log(this.tasks.length);
+      }
+    });
+    this.decTaskBtn.addEventListener('click', () => {
+      if (this.curTaskNum > 1) {
+        this.switchTask(this.curTaskNum - 1);
+        console.log('I work');
+      }
+    });
     window.addEventListener('keydown', this.handleClickEnterKey);
   }
 
   renderMenu = () => {
+    this.menuContainer.innerHTML = '';
     this.tasks.forEach((t) => {
       const item = this.createMenuItem(t);
 
       if (item) {
-        this.menu.append(item);
+        this.menuContainer.append(item);
       }
     });
   };
