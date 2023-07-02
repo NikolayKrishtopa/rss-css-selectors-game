@@ -139,24 +139,28 @@ class Game {
     this.renderTask();
   };
 
+  switchNextTask = () => {
+    if (this.curTaskNum < this.tasks.length) {
+      this.switchTask(this.curTaskNum + 1);
+      console.log(this.curTaskNum);
+      console.log(this.tasks.length);
+    }
+  };
+
+  switchPrevTask = () => {
+    if (this.curTaskNum > 1) {
+      this.switchTask(this.curTaskNum - 1);
+      console.log('I work');
+    }
+  };
+
   setListeners() {
     this.menuBtn.addEventListener('click', this.toggleMenu);
     this.closeMenuBtn.addEventListener('click', this.toggleMenu);
     this.answerField.addEventListener('input', this.checkAnswerBlind);
     this.enterBtn.addEventListener('click', this.checkAnswer);
-    this.incTaskBtn.addEventListener('click', () => {
-      if (this.curTaskNum < this.tasks.length) {
-        this.switchTask(this.curTaskNum + 1);
-        console.log(this.curTaskNum);
-        console.log(this.tasks.length);
-      }
-    });
-    this.decTaskBtn.addEventListener('click', () => {
-      if (this.curTaskNum > 1) {
-        this.switchTask(this.curTaskNum - 1);
-        console.log('I work');
-      }
-    });
+    this.incTaskBtn.addEventListener('click', this.switchNextTask);
+    this.decTaskBtn.addEventListener('click', this.switchPrevTask);
     window.addEventListener('keydown', this.handleClickEnterKey);
   }
 
