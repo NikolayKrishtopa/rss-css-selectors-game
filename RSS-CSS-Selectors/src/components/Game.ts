@@ -25,6 +25,8 @@ class Game {
   icon: HTMLImageElement;
   taskDescField: HTMLElement;
   resetBtn: HTMLButtonElement;
+  alertWindow: HTMLElement;
+  alertBtn: HTMLElement;
 
   constructor(tasks: Tasks) {
     this.tasks = tasks.map((t) => ({ ...t, isPassed: false }));
@@ -70,6 +72,8 @@ class Game {
     this.resetBtn = document.querySelector(
       '.info__reset-btn'
     ) as HTMLButtonElement;
+    this.alertWindow = document.querySelector('.popup') as HTMLElement;
+    this.alertBtn = document.querySelector('.popup__btn') as HTMLElement;
 
     this.initiate();
   }
@@ -148,6 +152,19 @@ class Game {
         }, 500);
       });
     }
+    if (this.passed.length === this.tasks.length) {
+      console.log('you win');
+
+      this.openAlert();
+    }
+  };
+
+  openAlert = () => {
+    this.alertWindow.classList.add('popup_state_active');
+  };
+
+  closeAlert = () => {
+    this.alertWindow.classList.remove('popup_state_active');
   };
 
   resetAnswer = () => (this.answerField.value = '');
@@ -198,8 +215,6 @@ class Game {
   };
 
   reset = () => {
-    console.log('reset');
-
     this.passed = [];
     this.switchTask(1);
   };
@@ -212,6 +227,10 @@ class Game {
     this.incTaskBtn.addEventListener('click', this.switchNextTask);
     this.decTaskBtn.addEventListener('click', this.switchPrevTask);
     this.resetBtn.addEventListener('click', this.reset);
+    this.alertBtn.addEventListener('click', () => {
+      this.closeAlert();
+      this.reset();
+    });
     window.addEventListener('keydown', this.handleClickEnterKey);
   }
 

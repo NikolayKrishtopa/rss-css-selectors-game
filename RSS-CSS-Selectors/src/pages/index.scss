@@ -1,6 +1,7 @@
 @import '../styles/reset.scss';
 @import '../styles/globalVars.scss';
 @import '../vendor/fonts.css';
+@import '../styles/highlight.scss';
 @import '../styles/blocks/root.scss';
 @import '../styles/blocks/game.scss';
 @import '../styles/blocks/header.scss';
@@ -8,7 +9,7 @@
 @import '../styles/blocks/info.scss';
 @import '../styles/blocks/footer.scss';
 @import '../styles/blocks/desired.scss';
-@import '../styles/highlight.scss';
+@import '../styles/blocks/popup.scss';
 
 .plate {
   width: 180px;
