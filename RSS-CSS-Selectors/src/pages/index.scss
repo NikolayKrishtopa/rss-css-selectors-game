@@ -10,61 +10,8 @@
 @import '../styles/blocks/footer.scss';
 @import '../styles/blocks/desired.scss';
 @import '../styles/blocks/popup.scss';
-
-.plate {
-  width: 180px;
-  height: 150px;
-  background-color: beige;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
-.plate_style_blue-bordered {
-  border: 30px solid lightblue;
-}
-
-.pickle {
-  height: 100px;
-  width: 30px;
-  border-radius: 15px;
-  background-color: green;
-  z-index: 2;
-}
-
-.orange {
-  width: 70px;
-  height: 60px;
-  background-color: orange;
-  border-radius: 50%;
-  z-index: 2;
-}
-.orange_small {
-  width: 45px;
-  height: 40px;
-}
-
-.bento {
-  width: 150px;
-  height: 150px;
-  background-color: #381306;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: 5px;
-}
-.apple {
-  width: 70px;
-  height: 60px;
-  background-color: rgb(220, 53, 27);
-  border-radius: 50%;
-  z-index: 2;
-}
-.apple_small {
-  width: 45px;
-  height: 40px;
-}
+@import '../styles/blocks/plate.scss';
+@import '../styles/blocks/pickle.scss';
+@import '../styles/blocks/orange.scss';
+@import '../styles/blocks/apple.scss';
+@import '../styles/blocks/bento.scss';

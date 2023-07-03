@@ -1,0 +1,13 @@
+.plate {
+  width: 180px;
+  height: 150px;
+  background-color: beige;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  &_style_blue-bordered {
+    border: 30px solid lightblue;
+  }
+}
