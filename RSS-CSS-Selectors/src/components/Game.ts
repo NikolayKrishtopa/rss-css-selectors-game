@@ -47,7 +47,7 @@ class Game {
     this.enterBtn = document.querySelector(
       '.code__enter-btn'
     ) as HTMLButtonElement;
-    this.curTaskNum = 1;
+    this.curTaskNum = Number(localStorage.getItem('curTaskNum')) || 1;
     this.curTaskItem = this.tasks.find((e) => e.id === this.curTaskNum) as Task;
     this.table = document.querySelector('.game__table') as HTMLDivElement;
     this.htmlSyntCodeArea = document.querySelector(
@@ -66,7 +66,11 @@ class Game {
     this.decTaskBtn = document.querySelector(
       '#decTaskBtn'
     ) as HTMLButtonElement;
-    this.passed = [];
+    this.passed =
+      localStorage
+        .getItem('passed')
+        ?.split('-')
+        .map((e) => Number(e)) || [];
     this.icon = document.querySelector('#taskStatusCheck') as HTMLImageElement;
     this.taskDescField = document.querySelector('.info__text') as HTMLElement;
     this.resetBtn = document.querySelector(
@@ -74,6 +78,7 @@ class Game {
     ) as HTMLButtonElement;
     this.alertWindow = document.querySelector('.popup') as HTMLElement;
     this.alertBtn = document.querySelector('.popup__btn') as HTMLElement;
+    console.log(this.passed);
 
     this.initiate();
   }
@@ -135,14 +140,15 @@ class Game {
     if (this.curTaskItem.correct.includes(answer)) {
       if (!this.passed.includes(this.curTaskItem.id)) {
         this.passed.push(this.curTaskItem.id);
-        this.table.querySelectorAll('.desired').forEach((e) => {
-          const timeout = setTimeout(() => {
-            this.switchNextTask();
-            clearTimeout(timeout);
-          }, 500);
-          e.classList.add('desired_state_correct');
-        });
+        localStorage.setItem('passed', this.passed.join('-'));
       }
+      this.table.querySelectorAll('.desired').forEach((e) => {
+        const timeout = setTimeout(() => {
+          this.switchNextTask();
+          clearTimeout(timeout);
+        }, 500);
+        e.classList.add('desired_state_correct');
+      });
     } else {
       this.table.querySelectorAll('.desired').forEach((e) => {
         e.classList.add('desired_state_wrong');
@@ -153,8 +159,6 @@ class Game {
       });
     }
     if (this.passed.length === this.tasks.length) {
-      console.log('you win');
-
       this.openAlert();
     }
   };
@@ -194,11 +198,14 @@ class Game {
   };
 
   switchTask = (taskNum: number) => {
+    console.log('switched');
+
     this.curTaskNum = taskNum;
+    localStorage.setItem('curTaskNum', this.curTaskNum.toString());
+    this.resetAnswer();
     this.switchTaskItem();
     this.renderMenu();
     this.renderTask();
-    this.resetAnswer();
     this.checkAnswerBlind();
   };
 

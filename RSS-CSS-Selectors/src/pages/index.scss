@@ -15,3 +15,10 @@
 @import '../styles/blocks/orange.scss';
 @import '../styles/blocks/apple.scss';
 @import '../styles/blocks/bento.scss';
+
+.language-html {
+  display: flex;
+  flex-shrink: 1;
+  max-width: 200px;
+  font-size: 12px;
+}
