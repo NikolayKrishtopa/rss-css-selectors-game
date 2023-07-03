@@ -10,11 +10,11 @@ const TASKS: Tasks = [
           <div class="apple desired"></div>
 `,
     syntheticCode: `
-    <div class = "table">
-      <pickle/>
-      <orange/>
-      <apple/>
-    </div>`,
+<div class = "table">
+  <pickle/>
+  <orange/>
+  <apple/>
+</div>`,
     correct: ['apple'],
     description: `You task here to find the apple among the other fruits`,
   },
@@ -25,9 +25,10 @@ const TASKS: Tasks = [
         <div class="plate desired"></div>
         `,
     syntheticCode: `
-    <div class = "table">
-		<plate/></plate>
-    </table>`,
+<div class = "table">
+  <plate/>
+  <plate/>
+</table>`,
     correct: ['plate'],
     description: `You task here to apply to all the plate on the table`,
   },
@@ -35,27 +36,27 @@ const TASKS: Tasks = [
     id: 3,
     title: 'Find Orange on the plate',
     htmlCode: `
-    <div class="orange"></div>
-           <div class="plate">
-          <div class="apple apple_small"></div>
-        </div>
-        <div class="plate">
-          <div class="orange desired"></div>
-        </div>
-        <div class="plate plate_style_blue-bordered">
-          <div class="pickle"></div>
-        </div>
+<div class="orange"></div>
+<div class="plate">
+<div class="apple apple_small"></div>
+</div>
+<div class="plate">
+<div class="orange desired"></div>
+</div>
+<div class="plate plate_style_blue-bordered">
+<div class="pickle"></div>
+</div>
     `,
     syntheticCode: `
-		<div class = "table">
-      <orange/>
-		  <plate>
-        <orange/>
-      </plate>
-      <plate class="fancy">
-        <pickle/>
-      </plate>
-    </table>`,
+<div class="table">
+  <orange/>
+  <plate>
+    <orange/>
+  </plate>
+  <plate class="fancy">
+    <pickle/>
+  </plate>
+</table>`,
     correct: ['plate orange', 'plate > orange'],
     description: `You need to find an orange located on the plate`,
   },
@@ -78,20 +79,20 @@ const TASKS: Tasks = [
       
     `,
     syntheticCode: `
-      <div class = "table">
-        <bento>
-          <pickle/>
-        </bento>
-        <plate class="fancy">
-          <apple/>
-        </plate>
-        <plate>
-          <pickle/>
-        </plate>
-        <plate class="fancy">
-          <pickle/>
-        </plate>
-      </div>`,
+<div class = "table">
+  <bento>
+    <pickle/>
+  </bento>
+  <plate class="fancy">
+    <apple/>
+  </plate>
+  <plate>
+    <pickle/>
+  </plate>
+  <plate class="fancy">
+    <pickle/>
+  </plate>
+</div>`,
     correct: ['.fancy pickle'],
     description: `Your task is to choose a pickle on the fancy plate`,
   },
@@ -114,20 +115,20 @@ const TASKS: Tasks = [
     </div>
     `,
     syntheticCode: `
-    <div class = "table">
-		  <bento>
-        <apple class="small"/>
-      </bento>
-		  <plate class="fancy">
-        <orange/>
-      </plate>
-		  <plate>
-        <apple class="small"/>
-      </plate>
-		  <plate class="fancy">
-        <pickle/>
-      </plate>
-    </div>`,
+<div class = "table">
+  <bento>
+    <apple class="small"/>
+  </bento>
+  <plate class="fancy">
+    <orange/>
+  </plate>
+  <plate>
+    <apple class="small"/>
+  </plate>
+  <plate class="fancy">
+    <pickle/>
+  </plate>
+</div>`,
     correct: ['.small', 'apple.small', 'apple .small', 'apple > .small'],
     description: `find and choose all the small apples located anywhere`,
   },
@@ -142,13 +143,13 @@ const TASKS: Tasks = [
         </div>
     `,
     syntheticCode: `
-    <div class = "table">
-		  <plate>
-        <pickle/>
-        <pickle/>
-        <pickle/>
-      </plate>
-    </div>`,
+<div class = "table">
+  <plate>
+    <pickle/>
+    <pickle/>
+    <pickle/>
+  </plate>
+</div>`,
     correct: [
       'plate:nth-child(2)',
       'pickle:nth-of-type(2)',
@@ -171,18 +172,95 @@ const TASKS: Tasks = [
         
     `,
     syntheticCode: `
-    <div class = "table">
-      <orange class="small"/>
-      <plate>
-        <orange class="small"/>
-      </plate>
-      <apple/>
-      <plate class="fancy">
-        <orange class="small"/>
-      </plate>
-    </div>`,
+<div class = "table">
+  <orange class="small"/>
+  <plate>
+    <orange class="small"/>
+  </plate>
+  <apple/>
+  <plate class="fancy">
+    <orange class="small"/>
+  </plate>
+</div>`,
     correct: ['orange .small', 'orange.small', 'orange > .small'],
     description: ``,
+  },
+  {
+    id: 8,
+    title: 'Choose the fancy plate',
+    htmlCode: `
+    <div class="orange orange_small"></div>
+        <div class="plate">
+          <div class="plate plate_style_blue-bordered desired"></div>
+          <div class="orange orange_small desired"></div>
+          <div class="plate">
+        </div>
+        
+    `,
+    syntheticCode: `
+<div class = "table">
+  <plate>
+    <orange class="small"/>
+  </plate>
+  <plate class="fancy">
+    <orange class="small"/>
+  </plate>
+</div>`,
+    correct: ['plate .fancy', '.fancy', 'plate > .fancy'],
+    description: `you need to choose the fancy plate at this excersize`,
+  },
+  {
+    id: 9,
+    title: 'Choose the small orange on the fancy plate',
+    htmlCode: `
+    <div class="plate plate_style_blue-bordered">
+    <div class="orange orange_small desired"></div>
+    </div>
+        <div class="plate">
+        <div class="apple apple_small"></div>
+          </div>
+          
+          <div class="plate">
+          <div class="apple"></div>
+        </div>
+        
+    `,
+    syntheticCode: `
+<div class = "table">
+  <plate class="fancy">
+    <orange class="small desired"/>
+  </plate>
+  <plate>
+    <apple class="small"/>
+  </plate>
+  <plate>
+    <apple/>
+  </plate>
+</div>`,
+    correct: ['plate .fancy .small', '.fancy .small', '.fancy > .small'],
+    description: `you need to choose the small orange on the fancy plate at this excersize`,
+  },
+  {
+    id: 10,
+    title: 'Choose the pickles',
+    htmlCode: `
+    <div class="plate">
+     <div class="orange orange_small"></div>
+     <div class="apple"></div>
+     <div class="orange "></div>
+     <div class="pickle desired"></div>
+    </div>    
+    `,
+    syntheticCode: `
+<div class = "table">
+  <plate class="fancy">
+    <apple"/>
+    <orange"/>
+    <pickle"/>
+  </plate>
+</div>`,
+    correct: ['pickle', 'plate pickle', '.fancy pickle', '.fancy > pickle'],
+    description: `you need to choose the pickle at this excersize`,
   },
 ];
 
