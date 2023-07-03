@@ -6,6 +6,12 @@
 
   &__text {
     font-size: $font-size;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      font-size: calc(0.4 * $font-size);
+    }
   }
 
   &__link {

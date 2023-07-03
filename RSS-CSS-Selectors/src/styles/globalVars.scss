@@ -9,16 +9,16 @@ $background-table: rgb(201, 148, 62);
 
 $font-size: 1.4rem;
 
-$fruit-size: 60px;
+$fruit-size: 50px;
 
 $font-content: 'Arial', serif;
 
 $max-width: 1200px;
 
 $breakpoint-extra-big: 1200px;
-$breakpoint-extra-m: 767px;
 $breakpoint-tablet: 800px;
-$breakpoint-mobile-big: 600px;
+$breakpoint-extra-m: 1000px;
+$breakpoint-mobile-big: 650px;
 $breakpoint-mobile: 480px;
 
 $transition-duration: 0.5s;
@@ -32,8 +32,4 @@ $transition-duration: 0.5s;
       opacity: 100%;
     }
   }
-}
-
-@media screen and (max-width: $breakpoint-extra-big) {
-  $font-size: 1rem;
 }

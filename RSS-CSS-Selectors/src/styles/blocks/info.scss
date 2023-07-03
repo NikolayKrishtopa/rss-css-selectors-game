@@ -5,6 +5,9 @@
   flex-direction: column;
   position: relative;
   gap: 50px;
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding: 10px;
+  }
   &__burger-menu {
     position: absolute;
     padding: 30px;
@@ -54,13 +57,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 
   &__nav {
     display: flex;
     gap: 20px;
     @media screen and (max-width: $breakpoint-extra-big) {
+      width: 100%;
+      justify-content: space-between;
       gap: 5px;
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
     }
   }
 
@@ -71,8 +82,8 @@
 
   &__title {
     font-size: calc(1.5 * $font-size);
-    @media ($breakpoint-extra-big) {
-      font-size: calc(1.2 * $font-size);
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: $font-size;
     }
   }
 
@@ -109,5 +120,15 @@
     color: $lighter;
     z-index: 3;
     border-radius: 10px;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+      left: 50px;
+      right: 50px;
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
+      font-size: calc(0.5 * $font-size);
+      left: 20px;
+      right: 20px;
+    }
   }
 }

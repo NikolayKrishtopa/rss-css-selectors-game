@@ -17,8 +17,18 @@
 @import '../styles/blocks/bento.scss';
 
 .language-html {
+  padding: 0;
   display: flex;
+  align-items: start;
   flex-shrink: 1;
-  max-width: 200px;
-  font-size: 12px;
+  font-size: 16px;
+  @media screen and (max-width: $breakpoint-extra-big) {
+    font-size: 11px;
+  }
+  @media screen and (max-width: $breakpoint-extra-m) {
+    font-size: 8px;
+  }
+  @media screen and (max-width: $breakpoint-mobile-big) {
+    font-size: 6px;
+  }
 }

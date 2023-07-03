@@ -6,10 +6,26 @@
   gap: 40px;
   max-height: 100vh;
   overflow-y: auto;
+  @media screen and (max-width: $breakpoint-extra-big) {
+    padding: 0 30px 30px;
+    gap: 30px;
+  }
+  @media screen and (max-width: $breakpoint-extra-m) {
+    padding: 0 20px 20px;
+  }
   &__task-annotation {
     font-size: calc(3 * $font-size);
     line-height: 1;
     text-align: center;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(2 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
+      font-size: calc(1.5 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      font-size: calc(1.1 * $font-size);
+    }
   }
 
   &__table {
@@ -22,6 +38,16 @@
     gap: 20px;
     color: black;
     font-size: calc(1.5 * $font-size);
+    @media screen and (max-width: $breakpoint-extra-big) {
+      gap: 10px;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      min-height: 150px;
+    }
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      gap: 5px;
+      min-height: 100px;
+    }
   }
 
   &__code-block {

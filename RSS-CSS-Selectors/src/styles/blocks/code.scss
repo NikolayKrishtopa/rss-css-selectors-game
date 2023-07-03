@@ -19,20 +19,59 @@
     justify-content: space-between;
     padding: 20px;
     background-color: $lighter;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
+      padding: 15px;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding: 10px;
+    }
   }
 
   &__title {
     font-size: calc(0.85 * $font-size);
+    @media screen and (max-width: $breakpoint-extra-m) {
+      font-size: calc(0.6 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: calc(0.5 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      font-size: calc(0.45 * $font-size);
+    }
   }
 
   &__filename {
     font-size: $font-size;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
+      font-size: calc(0.5 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: calc(0.45 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      font-size: calc(0.4 * $font-size);
+    }
   }
 
   &__canvas {
     display: grid;
     grid-template-columns: 30px 1fr;
     position: relative;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      grid-template-columns: 25px 1fr;
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
+      grid-template-columns: 20px 1fr;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      grid-template-columns: 15px 1fr;
+    }
   }
 
   &__row-numeration {
@@ -43,40 +82,70 @@
   &__enter-btn {
     @include clickable;
     background-color: yellowgreen;
-    padding: 10px;
+    padding: 5px;
     min-width: 70px;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+      min-width: 50px;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: calc(0.4 * $font-size);
+      min-width: unset;
+      padding: 2px;
+    }
   }
 
   &__row-num {
     background-color: $light;
     font-size: $font-size;
-    line-height: 1;
+    line-height: 1.5;
     color: $lighter;
     text-align: center;
-    padding: 5px;
-  }
-
-  &__field {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
+      font-size: calc(0.5 * $font-size);
+    }
   }
 
   &__field {
     width: 100%;
     font-size: $font-size;
-    line-height: 32px;
+    line-height: 1.5;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
+      font-size: calc(0.5 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      font-size: calc(0.4 * $font-size);
+      padding: 0 10px;
+    }
   }
 
   &__input {
     width: 100%;
     font-size: $font-size;
-    padding: 5px 20px;
+    line-height: 1.5;
+    padding: 0 20px;
     outline: none;
     color: $font-color-white;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-extra-m) {
+      font-size: calc(0.5 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      font-size: calc(0.5 * $font-size);
+      padding: 0 10px;
+      font-size: calc(0.4 * $font-size);
+    }
 
     &_style_blind {
       position: relative;
