@@ -9,34 +9,34 @@
   align-items: center;
   justify-content: center;
   z-index: 4;
-}
 
-.popup_state_active {
-  display: flex;
-}
+  &_state_active {
+    display: flex;
+  }
 
-.popup__content {
-  min-width: 400px;
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  gap: 20px;
-  padding: 30px;
-  border-radius: 15px;
-  justify-content: space-between;
-}
-.popup__msg {
-  font-size: 32px;
-  text-align: center;
-  color: black;
-}
-.popup__btn {
-  @include clickable;
-  width: 100%;
-  padding: 20px;
-  font-size: 24px;
-  text-align: center;
-  background-color: aquamarine;
-  border-radius: 5px;
+  &__content {
+    min-width: 400px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 15px;
+    justify-content: space-between;
+  }
+  &__msg {
+    font-size: calc(1.5 * $font-size);
+    text-align: center;
+    color: black;
+  }
+  &__btn {
+    @include clickable;
+    width: 100%;
+    padding: 20px;
+    font-size: $font-size;
+    text-align: center;
+    background-color: aquamarine;
+    border-radius: 5px;
+  }
 }

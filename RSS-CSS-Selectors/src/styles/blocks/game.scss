@@ -6,45 +6,44 @@
   gap: 40px;
   max-height: 100vh;
   overflow-y: auto;
+  &__task-annotation {
+    font-size: calc(3 * $font-size);
+    line-height: 1;
+    text-align: center;
+  }
+
+  &__table {
+    width: 100%;
+    min-height: 200px;
+    background-color: $background-table;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: black;
+    font-size: calc(1.5 * $font-size);
+  }
+
+  &__code-block {
+    background-color: $dark;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--white); /* цвет зоны отслеживания */
+  background: var(--white);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #666262; /* цвет бегунка */
-  border-radius: 5px; /* округлось бегунка */
-  border: none; /* отступ вокруг бегунка */
+  background-color: #666262;
+  border-radius: 5px;
+  border: none;
 }
 
 ::-webkit-scrollbar {
-  width: 10px; /* ширина всей полосы прокрутки */
+  width: 10px;
   height: 10px;
-}
-
-.game__task-annotation {
-  font-size: 70px;
-  line-height: 1;
-  text-align: center;
-}
-
-.game__table {
-  width: 100%;
-  min-height: 200px;
-  background-color: $background-table;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  color: black;
-  font-size: 32px;
-}
-
-.game__code-block {
-  background-color: $dark;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
 }

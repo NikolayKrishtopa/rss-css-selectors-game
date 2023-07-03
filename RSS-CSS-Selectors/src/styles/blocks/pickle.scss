@@ -1,7 +1,7 @@
 .pickle {
-  height: 100px;
-  width: 30px;
-  border-radius: 15px;
+  height: calc(1.5 * $fruit-size);
+  width: calc(0.5 * $fruit-size);
+  border-radius: calc(0.25 * $fruit-size);
   background-color: green;
   z-index: 2;
 }

@@ -4,8 +4,9 @@
   background-color: rgb(220, 53, 27);
   border-radius: 50%;
   z-index: 2;
-}
-.apple_small {
-  width: 45px;
-  height: 40px;
+
+  &_small {
+    width: 45px;
+    height: 40px;
+  }
 }

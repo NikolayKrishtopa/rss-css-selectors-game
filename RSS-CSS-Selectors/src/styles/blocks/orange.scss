@@ -1,11 +1,12 @@
 .orange {
-  width: 70px;
-  height: 60px;
+  width: calc(1.2 * $fruit-size);
+  height: $fruit-size;
   background-color: orange;
   border-radius: 50%;
   z-index: 2;
-}
-.orange_small {
-  width: 45px;
-  height: 40px;
+
+  &_small {
+    width: calc(0.8 * $fruit-size);
+    height: calc(0.75 * $fruit-size);
+  }
 }

@@ -33,12 +33,11 @@
 
 .desired {
   animation: 1s infinite alternate pulse;
-}
+  &_state_wrong {
+    animation: 0.1s infinite alternate wrong;
+  }
 
-.desired_state_wrong {
-  animation: 0.1s infinite alternate wrong;
-}
-
-.desired_state_correct {
-  animation: 0.5s alternate correct;
+  &_state_correct {
+    animation: 0.5s alternate correct;
+  }
 }
