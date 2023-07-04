@@ -182,7 +182,13 @@ const TASKS: Tasks = [
     <orange class="small"/>
   </plate>
 </div>`,
-    correct: ['orange .small', 'orange.small', 'orange > .small'],
+    correct: [
+      'plate orange .small',
+      'plate .small',
+      'plate.small',
+      'plate orange.small',
+      'plate > orange > .small',
+    ],
     description: ``,
   },
   {
@@ -190,11 +196,11 @@ const TASKS: Tasks = [
     title: 'Choose the fancy plate',
     htmlCode: `
     <div class="orange orange_small"></div>
-        <div class="plate">
+        <div class="plate"></div>
           <div class="plate plate_style_blue-bordered desired"></div>
-          <div class="orange orange_small desired"></div>
-          <div class="plate">
-        </div>
+          <div class="orange orange_small"></div>
+          <div class="plate"></div>
+        
         
     `,
     syntheticCode: `
@@ -237,7 +243,15 @@ const TASKS: Tasks = [
     <apple/>
   </plate>
 </div>`,
-    correct: ['plate .fancy .small', '.fancy .small', '.fancy > .small'],
+    correct: [
+      'orange',
+      'plate orange',
+      'plate .fancy .small',
+      'plate .fancy orange',
+      '.fancy orange.small',
+      '.fancy orange .small',
+      '.fancy > orange.small',
+    ],
     description: `you need to choose the small orange on the fancy plate at this excersize`,
   },
   {
@@ -247,7 +261,6 @@ const TASKS: Tasks = [
     <div class="plate">
      <div class="orange orange_small"></div>
      <div class="apple"></div>
-     <div class="orange "></div>
      <div class="pickle desired"></div>
     </div>    
     `,

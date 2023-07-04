@@ -142,11 +142,13 @@ class Game {
         this.passed.push(this.curTaskItem.id);
         localStorage.setItem('passed', this.passed.join('-'));
       }
-      this.table.querySelectorAll('.desired').forEach((e) => {
-        const timeout = setTimeout(() => {
-          this.switchNextTask();
-          clearTimeout(timeout);
-        }, 500);
+      this.table.querySelectorAll('.desired').forEach((e, i) => {
+        if (i === 0) {
+          const timeout = setTimeout(() => {
+            this.switchNextTask();
+            clearTimeout(timeout);
+          }, 500);
+        }
         e.classList.add('desired_state_correct');
       });
     } else {
