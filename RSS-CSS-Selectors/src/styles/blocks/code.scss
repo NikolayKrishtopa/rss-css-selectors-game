@@ -12,6 +12,12 @@
   flex-direction: column;
   border: 2px solid grey;
 
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
   &__heading {
     display: flex;
     align-items: center;
@@ -79,7 +85,7 @@
     flex-direction: column;
   }
 
-  &__enter-btn {
+  &__btn {
     @include clickable;
     background-color: yellowgreen;
     padding: 5px;
@@ -92,6 +98,10 @@
       font-size: calc(0.4 * $font-size);
       min-width: unset;
       padding: 2px;
+    }
+    &_type_help {
+      align-self: flex-end;
+      background-color: #b6aff0;
     }
   }
 

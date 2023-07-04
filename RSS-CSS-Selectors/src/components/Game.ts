@@ -27,6 +27,8 @@ class Game {
   resetBtn: HTMLButtonElement;
   alertWindow: HTMLElement;
   alertBtn: HTMLElement;
+  helpBtn: HTMLButtonElement;
+  promptUsed: boolean;
 
   constructor(tasks: Tasks) {
     this.tasks = tasks.map((t) => ({ ...t, isPassed: false }));
@@ -44,9 +46,7 @@ class Game {
       '#closeMenuBtn'
     ) as HTMLButtonElement;
     this.answerField = document.querySelector('#answer') as HTMLInputElement;
-    this.enterBtn = document.querySelector(
-      '.code__enter-btn'
-    ) as HTMLButtonElement;
+    this.enterBtn = document.querySelector('#EnterBtn') as HTMLButtonElement;
     this.curTaskNum = Number(localStorage.getItem('curTaskNum')) || 1;
     this.curTaskItem = this.tasks.find((e) => e.id === this.curTaskNum) as Task;
     this.table = document.querySelector('.game__table') as HTMLDivElement;
@@ -78,7 +78,10 @@ class Game {
     ) as HTMLButtonElement;
     this.alertWindow = document.querySelector('.popup') as HTMLElement;
     this.alertBtn = document.querySelector('.popup__btn') as HTMLElement;
-    console.log(this.passed);
+    this.helpBtn = document.querySelector(
+      '.code__btn_type_help'
+    ) as HTMLButtonElement;
+    this.promptUsed = false;
 
     this.initiate();
   }
@@ -176,6 +179,7 @@ class Game {
   resetAnswer = () => (this.answerField.value = '');
 
   handleClickEnterKey = (e: KeyboardEvent) => {
+    e.preventDefault();
     if (e.key === 'Enter') {
       this.checkAnswer();
     }
@@ -200,7 +204,7 @@ class Game {
   };
 
   switchTask = (taskNum: number) => {
-    console.log('switched');
+    this.promptUsed = false;
 
     this.curTaskNum = taskNum;
     localStorage.setItem('curTaskNum', this.curTaskNum.toString());
@@ -228,6 +232,17 @@ class Game {
     this.switchTask(1);
   };
 
+  showPrompt = () => {
+    if (this.promptUsed) return;
+    this.promptUsed = true;
+    this.curTaskItem.correct[0].split('').forEach((e, i) => {
+      const timeout = setTimeout(() => {
+        this.answerField.value += e;
+        clearTimeout(timeout);
+      }, 200 * i);
+    });
+  };
+
   setListeners() {
     this.menuBtn.addEventListener('click', this.toggleMenu);
     this.closeMenuBtn.addEventListener('click', this.toggleMenu);
@@ -236,6 +251,7 @@ class Game {
     this.incTaskBtn.addEventListener('click', this.switchNextTask);
     this.decTaskBtn.addEventListener('click', this.switchPrevTask);
     this.resetBtn.addEventListener('click', this.reset);
+    this.helpBtn.addEventListener('click', this.showPrompt);
     this.alertBtn.addEventListener('click', () => {
       this.closeAlert();
       this.reset();
