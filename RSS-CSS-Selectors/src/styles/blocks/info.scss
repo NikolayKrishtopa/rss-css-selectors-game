@@ -5,6 +5,23 @@
   flex-direction: column;
   position: relative;
   gap: 50px;
+
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #666262;
+    border-radius: 5px;
+    border: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
   @media screen and (max-width: $breakpoint-tablet) {
     padding: 10px;
   }
@@ -21,6 +38,14 @@
     z-index: 1;
     display: none;
 
+    @media screen and (max-width: $breakpoint-extra-m) {
+      padding: 10px;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      gap: 10px;
+    }
+
     &_state_active {
       display: flex;
     }
@@ -33,6 +58,11 @@
     gap: 10px;
     padding: 10px;
 
+    @media screen and (max-width: $breakpoint-tablet) {
+      gap: 5px;
+      padding: 0;
+    }
+
     &_current {
       pointer-events: none;
       background-color: $lighter;
@@ -41,6 +71,12 @@
 
   &__burger-menu-item-num {
     font-size: $font-size;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: calc(0.5 * $font-size);
+    }
   }
 
   &__menu-container {
@@ -51,6 +87,12 @@
 
   &__burger-menu-item-title {
     font-size: $font-size;
+    @media screen and (max-width: $breakpoint-extra-big) {
+      font-size: calc(0.7 * $font-size);
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: calc(0.5 * $font-size);
+    }
   }
 
   &__heading {
