@@ -2,6 +2,8 @@ import { Task, Tasks } from '../types/models';
 import passedIcon from '../assets/img/check_icon_no_border_green.svg';
 import passedIconL from '../assets/img/check_icon_green.svg';
 import basicIconL from '../assets/img/check_icon.svg';
+import SELECTORS from '../utils/selectors';
+import LOC_STRG_KEYS from '../utils/locStrgKeys';
 
 class Game {
   menu: HTMLElement;
@@ -33,53 +35,64 @@ class Game {
   constructor(tasks: Tasks) {
     this.tasks = tasks.map((t) => ({ ...t, isPassed: false }));
     this.taskDescr = document.querySelector(
-      '.game__task-annotation'
+      SELECTORS.TASK_DESCR
     ) as HTMLElement;
-    this.menu = document.querySelector('.info__burger-menu') as HTMLElement;
+    this.menu = document.querySelector(SELECTORS.MENU) as HTMLElement;
     this.menuContainer = document.querySelector(
-      '.info__menu-container'
+      SELECTORS.MENU_CONTAINER
     ) as HTMLDivElement;
     this.menuBtn = document.querySelector(
-      '#burgerMenuBtn'
+      SELECTORS.BURGER_MENU_BTN
     ) as HTMLButtonElement;
     this.closeMenuBtn = document.querySelector(
-      '#closeMenuBtn'
+      SELECTORS.CLOSE_MENU_BTN
     ) as HTMLButtonElement;
-    this.answerField = document.querySelector('#answer') as HTMLInputElement;
-    this.enterBtn = document.querySelector('#EnterBtn') as HTMLButtonElement;
-    this.curTaskNum = Number(localStorage.getItem('curTaskNum')) || 1;
+    this.answerField = document.querySelector(
+      SELECTORS.ANSWER_FIELD
+    ) as HTMLInputElement;
+    this.enterBtn = document.querySelector(
+      SELECTORS.ENTER_BTN
+    ) as HTMLButtonElement;
+    this.curTaskNum =
+      Number(localStorage.getItem(LOC_STRG_KEYS.CUR_TASK_NUM)) || 1;
     this.curTaskItem = this.tasks.find((e) => e.id === this.curTaskNum) as Task;
-    this.table = document.querySelector('.game__table') as HTMLDivElement;
+    this.table = document.querySelector(SELECTORS.TABLE) as HTMLDivElement;
     this.htmlSyntCodeArea = document.querySelector(
-      '#htmlCode'
+      SELECTORS.HTML_SYNT_CODE_AREA
     ) as HTMLParagraphElement;
     this.totalLvlQtyArea = document.querySelector(
-      '#totalLvls'
+      SELECTORS.TOTAL_TASK_QTY_FIELD
     ) as HTMLSpanElement;
-    this.curLvlArea = document.querySelector('#curLvl') as HTMLSpanElement;
+    this.curLvlArea = document.querySelector(
+      SELECTORS.CUR_LVL_FIELD
+    ) as HTMLSpanElement;
     this.menuItemTemmplate = document.querySelector(
-      '#menuItemTemmplate'
+      SELECTORS.MENU_ITEM_TEMPLATE
     ) as HTMLTemplateElement;
     this.incTaskBtn = document.querySelector(
-      '#incTaskBtn'
+      SELECTORS.INC_TASK_BTN
     ) as HTMLButtonElement;
     this.decTaskBtn = document.querySelector(
-      '#decTaskBtn'
+      SELECTORS.DEC_TASK_BTN
     ) as HTMLButtonElement;
     this.passed =
       localStorage
-        .getItem('passed')
-        ?.split('-')
+        .getItem(LOC_STRG_KEYS.PASSED)
+        ?.split(LOC_STRG_KEYS.SEPARATOR)
         .map((e) => Number(e)) || [];
-    this.icon = document.querySelector('#taskStatusCheck') as HTMLImageElement;
-    this.taskDescField = document.querySelector('.info__text') as HTMLElement;
+    this.icon = document.querySelector(
+      SELECTORS.TASK_STATUS_ICON
+    ) as HTMLImageElement;
+    this.taskDescField = document.querySelector(
+      SELECTORS.TASK_DESC_FIELD
+    ) as HTMLElement;
     this.resetBtn = document.querySelector(
-      '.info__reset-btn'
+      SELECTORS.RESET_BTN
     ) as HTMLButtonElement;
-    this.alertWindow = document.querySelector('.popup') as HTMLElement;
-    this.alertBtn = document.querySelector('.popup__btn') as HTMLElement;
+    this.alertWindow = document.querySelector(SELECTORS.POPUP) as HTMLElement;
+    this.alertBtn = document.querySelector(SELECTORS.POPUP_BTN) as HTMLElement;
     this.helpBtn = document.querySelector(
-      '.code__btn_type_help'
+      SELECTORS.HELP_BTN
     ) as HTMLButtonElement;
     this.promptUsed = false;
 
@@ -87,11 +100,11 @@ class Game {
   }
 
   toggleMenu = () => {
-    if (this.menu.classList.contains('info__burger-menu_state_active')) {
-      this.menu.classList.remove('info__burger-menu_state_active');
+    if (this.menu.classList.contains(SELECTORS.MENU_ACTIVE)) {
+      this.menu.classList.remove(SELECTORS.MENU_ACTIVE);
     } else {
       this.renderMenu;
-      this.menu.classList.add('info__burger-menu_state_active');
+      this.menu.classList.add(SELECTORS.MENU_ACTIVE);
     }
   };
 
@@ -101,24 +114,24 @@ class Game {
     ) as HTMLElement;
 
     const menuItemElement = element.querySelector(
-      '.info__burger-menu-item'
+      SELECTORS.MENU_ITEM_ELEMENT
     ) as HTMLDivElement;
 
-    const title = menuItemElement.querySelector(
-      '.info__burger-menu-item-title'
-    );
-    const num = menuItemElement.querySelector('.info__burger-menu-item-num');
+    const title = menuItemElement.querySelector(SELECTORS.MENU_ITEM_ELEM_TITLE);
+    const num = menuItemElement.querySelector(SELECTORS.MENU_ITEM_ELEM_NUM);
     if (title && num) {
       title.textContent = item.title;
       num.textContent = item.id.toString();
     }
     if (item.id === this.curTaskNum) {
-      menuItemElement.classList.add('info__burger-menu-item_current');
+      menuItemElement.classList.add(SELECTORS.MENU_ITEM_CURRENT);
     }
     menuItemElement.addEventListener('click', () => {
       this.switchTask(item.id);
     });
-    const icon = menuItemElement.querySelector('img');
+    const icon = menuItemElement.querySelector(
+      SELECTORS.MENU_ITEM_ELEM_ICON
+    ) as HTMLImageElement;
     if (icon && this.passed.includes(item.id)) {
       icon.src = passedIcon;
     }
@@ -127,9 +140,9 @@ class Game {
 
   checkAnswerBlind = () => {
     if (this.answerField.value.length > 0) {
-      this.answerField.classList.remove('code__input_style_blind');
+      this.answerField.classList.remove(SELECTORS.BLINK);
     } else {
-      this.answerField.classList.add('code__input_style_blind');
+      this.answerField.classList.add(SELECTORS.BLINK);
     }
   };
 
@@ -143,22 +156,25 @@ class Game {
     if (this.curTaskItem.correct.includes(answer)) {
       if (!this.passed.includes(this.curTaskItem.id)) {
         this.passed.push(this.curTaskItem.id);
-        localStorage.setItem('passed', this.passed.join('-'));
+        localStorage.setItem(
+          LOC_STRG_KEYS.PASSED,
+          this.passed.join(LOC_STRG_KEYS.SEPARATOR)
+        );
       }
-      this.table.querySelectorAll('.desired').forEach((e, i) => {
+      this.table.querySelectorAll(SELECTORS.DESIRED).forEach((e, i) => {
         if (i === 0) {
           const timeout = setTimeout(() => {
             this.switchNextTask();
             clearTimeout(timeout);
           }, 500);
         }
-        e.classList.add('desired_state_correct');
+        e.classList.add(SELECTORS.DESIRED_CORRECT);
       });
     } else {
-      this.table.querySelectorAll('.desired').forEach((e) => {
-        e.classList.add('desired_state_wrong');
+      this.table.querySelectorAll(SELECTORS.DESIRED).forEach((e) => {
+        e.classList.add(SELECTORS.DESIRED_WRONG);
         const timeout = setTimeout(() => {
-          e.classList.remove('desired_state_wrong');
+          e.classList.remove(SELECTORS.DESIRED_WRONG);
           clearTimeout(timeout);
         }, 500);
       });
@@ -169,17 +185,16 @@ class Game {
   };
 
   openAlert = () => {
-    this.alertWindow.classList.add('popup_state_active');
+    this.alertWindow.classList.add(SELECTORS.POPUP_ACTIVE);
   };
 
   closeAlert = () => {
-    this.alertWindow.classList.remove('popup_state_active');
+    this.alertWindow.classList.remove(SELECTORS.POPUP_ACTIVE);
   };
 
   resetAnswer = () => (this.answerField.value = '');
 
   handleClickEnterKey = (e: KeyboardEvent) => {
-    e.preventDefault();
     if (e.key === 'Enter') {
       this.checkAnswer();
     }
@@ -207,7 +222,10 @@ class Game {
     this.promptUsed = false;
 
     this.curTaskNum = taskNum;
-    localStorage.setItem('curTaskNum', this.curTaskNum.toString());
+    localStorage.setItem(
+      LOC_STRG_KEYS.CUR_TASK_NUM,
+      this.curTaskNum.toString()
+    );
     this.resetAnswer();
     this.switchTaskItem();
     this.renderMenu();

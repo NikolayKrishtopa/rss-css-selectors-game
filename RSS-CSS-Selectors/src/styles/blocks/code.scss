@@ -1,4 +1,4 @@
-@keyframes blind {
+@keyframes blink {
   from {
     background-color: rgb(154, 211, 211);
   }
@@ -157,9 +157,9 @@
       font-size: calc(0.4 * $font-size);
     }
 
-    &_style_blind {
+    &_style_blink {
       position: relative;
-      animation: 1s infinite alternate blind;
+      animation: 1s infinite alternate blink;
     }
   }
 
