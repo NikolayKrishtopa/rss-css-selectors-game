@@ -1,18 +1,17 @@
-import { Task, Tasks } from '../types/models';
+import { IGame, Task, Tasks } from '../types/models';
 import passedIcon from '../assets/img/check_icon_no_border_green.svg';
 import passedIconL from '../assets/img/check_icon_green.svg';
 import basicIconL from '../assets/img/check_icon.svg';
 import SELECTORS from '../utils/selectors';
 import LOC_STRG_KEYS from '../utils/locStrgKeys';
 
-class Game {
+class Game implements IGame {
   menu: HTMLElement;
   menuContainer: HTMLDivElement;
   menuBtn: HTMLButtonElement;
   closeMenuBtn: HTMLButtonElement;
   answerField: HTMLInputElement;
   enterBtn: HTMLButtonElement;
-  tasks: Tasks;
   curTaskNum: number;
   curTaskItem: Task;
   table: HTMLDivElement;
@@ -32,8 +31,7 @@ class Game {
   helpBtn: HTMLButtonElement;
   promptUsed: boolean;
 
-  constructor(tasks: Tasks) {
-    this.tasks = tasks.map((t) => ({ ...t, isPassed: false }));
+  constructor(public tasks: Tasks) {
     this.taskDescr = document.querySelector(
       SELECTORS.TASK_DESCR
     ) as HTMLElement;

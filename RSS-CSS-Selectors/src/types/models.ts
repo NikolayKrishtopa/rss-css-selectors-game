@@ -8,3 +8,7 @@ export type Task = {
 };
 
 export type Tasks = Array<Task>;
+
+export interface IGame {
+  tasks: Tasks;
+}
