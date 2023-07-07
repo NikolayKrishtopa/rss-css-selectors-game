@@ -1,9 +1,12 @@
-import { IGame, Task, Tasks } from '../types/models';
+import { IGame, OpenAlert, Task, Tasks } from '../types/models';
 import passedIcon from '../assets/img/check_icon_no_border_green.svg';
 import passedIconL from '../assets/img/check_icon_green.svg';
 import basicIconL from '../assets/img/check_icon.svg';
 import SELECTORS from '../utils/selectors';
 import LOC_STRG_KEYS from '../utils/locStrgKeys';
+
+// toDo: separate this class for a few modules.
+// Not sure if needed, needs to consider
 
 class Game implements IGame {
   menu: HTMLElement;
@@ -26,12 +29,10 @@ class Game implements IGame {
   icon: HTMLImageElement;
   taskDescField: HTMLElement;
   resetBtn: HTMLButtonElement;
-  alertWindow: HTMLElement;
-  alertBtn: HTMLElement;
-  helpBtn: HTMLButtonElement;
   promptUsed: boolean;
+  helpBtn: HTMLButtonElement;
 
-  constructor(public tasks: Tasks) {
+  constructor(public tasks: Tasks, public openAlert: OpenAlert) {
     this.taskDescr = document.querySelector(
       SELECTORS.TASK_DESCR
     ) as HTMLElement;
@@ -87,11 +88,10 @@ class Game implements IGame {
     this.resetBtn = document.querySelector(
       SELECTORS.RESET_BTN
     ) as HTMLButtonElement;
-    this.alertWindow = document.querySelector(SELECTORS.POPUP) as HTMLElement;
-    this.alertBtn = document.querySelector(SELECTORS.POPUP_BTN) as HTMLElement;
     this.helpBtn = document.querySelector(
       SELECTORS.HELP_BTN
     ) as HTMLButtonElement;
+
     this.promptUsed = false;
 
     this.initiate();
@@ -182,14 +182,6 @@ class Game implements IGame {
     }
   };
 
-  openAlert = () => {
-    this.alertWindow.classList.add(SELECTORS.POPUP_ACTIVE);
-  };
-
-  closeAlert = () => {
-    this.alertWindow.classList.remove(SELECTORS.POPUP_ACTIVE);
-  };
-
   resetAnswer = () => (this.answerField.value = '');
 
   handleClickEnterKey = (e: KeyboardEvent) => {
@@ -268,10 +260,6 @@ class Game implements IGame {
     this.decTaskBtn.addEventListener('click', this.switchPrevTask);
     this.resetBtn.addEventListener('click', this.reset);
     this.helpBtn.addEventListener('click', this.showPrompt);
-    this.alertBtn.addEventListener('click', () => {
-      this.closeAlert();
-      this.reset();
-    });
     window.addEventListener('keydown', this.handleClickEnterKey);
   }
 
