@@ -1,7 +1,7 @@
 const SELECTORS = {
   TASK_DESCR: '.game__task-annotation',
   MENU: '.menu',
-  MENU_CONTAINER: '.menu__menu-container',
+  MENU_CONTAINER: '.menu__container',
   BURGER_MENU_BTN: '#burgerMenuBtn',
   CLOSE_MENU_BTN: '#closeMenuBtn',
   ANSWER_FIELD: '#answer',

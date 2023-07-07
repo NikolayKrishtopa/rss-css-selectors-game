@@ -1,24 +1,31 @@
 .menu {
   display: flex;
-  padding: 30px;
   flex-direction: column;
-  gap: 20px;
-  background-color: $dark;
-  z-index: 1;
-  position: relative;
+  align-items: flex-end;
 
   @media screen and (max-width: $breakpoint-extra-m) {
-    padding: 20px;
     display: none;
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    max-width: 300px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
   }
 
-  @media screen and (max-width: $breakpoint-tablet) {
-    gap: 10px;
+  &__wrapper {
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    gap: 15px;
+    background-color: $dark;
+    position: relative;
+    height: 100%;
+
+    @media screen and (max-width: $breakpoint-extra-m) {
+      max-width: 300px;
+      padding: 20px;
+    }
   }
 
   &_state_active {
@@ -39,10 +46,6 @@
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-  }
-
-  @media screen and (max-width: $breakpoint-tablet) {
-    padding: 10px;
   }
 
   &__item {
@@ -73,12 +76,6 @@
     }
   }
 
-  &__container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
   &__item-title {
     font-size: $font-size;
     @media screen and (max-width: $breakpoint-extra-big) {
@@ -97,6 +94,12 @@
       flex-direction: column-reverse;
       gap: 20px;
     }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 
   &__nav {
@@ -138,6 +141,12 @@
   &__nav-btn {
     @include clickable;
     &_type_menu {
+      display: none;
+      @media screen and (max-width: $breakpoint-extra-m) {
+        display: block;
+      }
+    }
+    &_type_close {
       display: none;
       @media screen and (max-width: $breakpoint-extra-m) {
         display: block;
