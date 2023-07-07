@@ -15,7 +15,7 @@ const TASKS: Tasks = [
   <orange/>
   <apple/>
 </div>`,
-    correct: ['apple'],
+    correct: ['apple', 'table apple', 'table > apple'],
     description: `You task here to find the apple among the other fruits`,
   },
   {
@@ -29,7 +29,7 @@ const TASKS: Tasks = [
   <plate/>
   <plate/>
 </table>`,
-    correct: ['plate'],
+    correct: ['plate', 'table plate', 'table > plate'],
     description: `You task here to apply to all the plate on the table`,
   },
   {
@@ -129,7 +129,7 @@ const TASKS: Tasks = [
     <pickle/>
   </plate>
 </div>`,
-    correct: ['.small', 'apple.small', 'apple .small', 'apple > .small'],
+    correct: ['.small', 'apple.small'],
     description: `find and choose all the small apples located anywhere`,
   },
   {
@@ -182,13 +182,7 @@ const TASKS: Tasks = [
     <orange class="small"/>
   </plate>
 </div>`,
-    correct: [
-      'plate orange .small',
-      'plate .small',
-      'plate.small',
-      'plate orange.small',
-      'plate > orange > .small',
-    ],
+    correct: ['plate orange.small', 'plate .small', 'plate > orange.small'],
     description: ``,
   },
   {
@@ -212,7 +206,7 @@ const TASKS: Tasks = [
     <orange class="small"/>
   </plate>
 </div>`,
-    correct: ['plate .fancy', '.fancy', 'plate > .fancy'],
+    correct: ['plate.fancy', '.fancy'],
     description: `you need to choose the fancy plate at this excersize`,
   },
   {
@@ -246,10 +240,9 @@ const TASKS: Tasks = [
     correct: [
       'orange',
       'plate orange',
-      'plate .fancy .small',
-      'plate .fancy orange',
+      'plate.fancy .small',
+      'plate.fancy orange',
       '.fancy orange.small',
-      '.fancy orange .small',
       '.fancy > orange.small',
     ],
     description: `you need to choose the small orange on the fancy plate at this excersize`,
