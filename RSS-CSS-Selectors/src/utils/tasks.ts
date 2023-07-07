@@ -4,11 +4,12 @@ const TASKS: Tasks = [
   {
     id: 1,
     title: 'Find apple',
-    htmlCode: `   
-          <div class="pickle"></div>
-          <div class="orange"></div>
-          <div class="apple desired"></div>
-`,
+    htmlCode: `
+<div class="pickle">
+</div><div class="orange">
+</div>
+<div class="apple desired">
+</div>`,
     syntheticCode: `
 <div class = "table">
   <pickle/>

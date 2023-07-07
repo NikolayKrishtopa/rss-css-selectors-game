@@ -33,7 +33,11 @@ class Game implements IGame {
   helpBtn: HTMLButtonElement;
   seen: Array<number>;
 
-  constructor(public tasks: Tasks, public openAlert: OpenAlert) {
+  constructor(
+    public tasks: Tasks,
+    public openAlert: OpenAlert,
+    public highlight: () => void
+  ) {
     this.taskDescr = document.querySelector(
       SELECTORS.TASK_DESCR
     ) as HTMLElement;
@@ -212,6 +216,7 @@ class Game implements IGame {
     } else {
       this.icon.src = basicIconL;
     }
+    this.highlight();
   };
 
   switchTask = (taskNum: number) => {

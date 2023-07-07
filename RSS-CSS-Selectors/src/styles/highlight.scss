@@ -5,13 +5,17 @@
   background: transparent;
 }
 .hljs {
-  color: #44af36;
+  color: #9fff90;
 }
 .hljs-subst {
-  color: #97af36;
+  color: #f0feb7;
 }
 .hljs-comment {
   color: #888;
+}
+
+.hljs-attr {
+  color: #6d5ad7;
 }
 .hljs-attribute,
 .hljs-doctag,
@@ -29,7 +33,7 @@
 .hljs-string,
 .hljs-template-tag,
 .hljs-type {
-  color: rgb(133, 25, 13);
+  color: rgb(241, 64, 44);
 }
 .hljs-section,
 .hljs-title {

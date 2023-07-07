@@ -126,6 +126,7 @@
     padding: 0 20px;
     display: flex;
     flex-direction: column;
+    white-space: pre;
     @media screen and (max-width: $breakpoint-extra-big) {
       font-size: calc(0.7 * $font-size);
     }

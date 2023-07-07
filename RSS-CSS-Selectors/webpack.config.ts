@@ -70,6 +70,10 @@ module.exports = (env: EnvObj) => {
             filename: 'assets/sounds/[name][ext]',
           },
         },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
       ],
     },
     plugins: [
