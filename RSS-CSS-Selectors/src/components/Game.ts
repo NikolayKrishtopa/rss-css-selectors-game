@@ -1,6 +1,7 @@
 import { IGame, OpenAlert, Task, Tasks } from '../types/models';
 import passedIcon from '../assets/img/check_icon_no_border_green.svg';
 import passedIconL from '../assets/img/check_icon_green.svg';
+import passedWithPromtIcon from '../assets/img/eye_icon.svg';
 import basicIconL from '../assets/img/check_icon.svg';
 import SELECTORS from '../utils/selectors';
 import LOC_STRG_KEYS from '../utils/locStrgKeys';
@@ -30,6 +31,7 @@ class Game implements IGame {
   resetBtn: HTMLButtonElement;
   promptUsed: boolean;
   helpBtn: HTMLButtonElement;
+  seen: Array<number>;
 
   constructor(public tasks: Tasks, public openAlert: OpenAlert) {
     this.taskDescr = document.querySelector(
@@ -76,6 +78,11 @@ class Game implements IGame {
     this.passed =
       localStorage
         .getItem(LOC_STRG_KEYS.PASSED)
+        ?.split(LOC_STRG_KEYS.SEPARATOR)
+        .map((e) => Number(e)) || [];
+    this.seen =
+      localStorage
+        .getItem(LOC_STRG_KEYS.SEEN)
         ?.split(LOC_STRG_KEYS.SEPARATOR)
         .map((e) => Number(e)) || [];
     this.icon = document.querySelector(
@@ -126,7 +133,9 @@ class Game implements IGame {
     const icon = menuItemElement.querySelector(
       SELECTORS.MENU_ITEM_ELEM_ICON
     ) as HTMLImageElement;
-    if (icon && this.passed.includes(item.id)) {
+    if (icon && this.seen.includes(item.id)) {
+      icon.src = passedWithPromtIcon;
+    } else if (this.passed.includes(item.id)) {
       icon.src = passedIcon;
     }
     return menuItemElement;
@@ -196,7 +205,9 @@ class Game implements IGame {
     this.curLvlArea.textContent = this.curTaskNum.toString();
     this.taskDescr.textContent = this.curTaskItem.title;
     this.htmlSyntCodeArea.textContent = this.curTaskItem.syntheticCode;
-    if (this.passed.includes(this.curTaskItem.id)) {
+    if (this.seen.includes(this.curTaskItem.id)) {
+      this.icon.src = passedWithPromtIcon;
+    } else if (this.passed.includes(this.curTaskItem.id)) {
       this.icon.src = passedIconL;
     } else {
       this.icon.src = basicIconL;
@@ -232,11 +243,17 @@ class Game implements IGame {
 
   reset = () => {
     this.passed = [];
+    this.seen = [];
     this.switchTask(1);
   };
 
   showPrompt = () => {
     if (this.promptUsed) return;
+    this.seen.push(this.curTaskNum);
+    localStorage.setItem(
+      LOC_STRG_KEYS.SEEN,
+      this.seen.join(LOC_STRG_KEYS.SEPARATOR)
+    );
     this.promptUsed = true;
     this.curTaskItem.correct[0].split('').forEach((e, i) => {
       const timeout = setTimeout(() => {
@@ -244,6 +261,8 @@ class Game implements IGame {
         clearTimeout(timeout);
       }, 200 * i);
     });
+    this.renderTask();
+    this.renderMenu();
   };
 
   setListeners() {
