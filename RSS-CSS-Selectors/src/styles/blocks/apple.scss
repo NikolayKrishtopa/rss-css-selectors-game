@@ -3,14 +3,10 @@
   height: 60px;
   background-color: rgb(220, 53, 27);
   border-radius: 50%;
-  z-index: 2;
-  @media screen and (max-width: $breakpoint-extra-big) {
-    width: $fruit-size;
-    height: calc(0.9 * $fruit-size);
-  }
-  @media screen and (max-width: $breakpoint-tablet) {
+
+  @media screen and (max-width: $breakpoint-mobile-big) {
     width: calc(0.8 * $fruit-size);
-    height: calc(0.7 * $fruit-size);
+    height: calc(0.75 * $fruit-size);
   }
   @media screen and (max-width: $breakpoint-mobile-big) {
     width: calc(0.5 * $fruit-size);
@@ -20,15 +16,12 @@
   &_small {
     width: 45px;
     height: 40px;
-    @media screen and (max-width: $breakpoint-extra-big) {
-      width: calc(0.6 * $fruit-size);
-      height: calc(0.55 * $fruit-size);
-    }
-    @media screen and (max-width: $breakpoint-tablet) {
-      width: calc(0.45 * $fruit-size);
-      height: calc(0.4 * $fruit-size);
-    }
+
     @media screen and (max-width: $breakpoint-mobile-big) {
+      width: calc(0.5 * $fruit-size);
+      height: calc(0.45 * $fruit-size);
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
       width: calc(0.35 * $fruit-size);
       height: calc(0.3 * $fruit-size);
     }

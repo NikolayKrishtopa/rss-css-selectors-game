@@ -41,15 +41,15 @@
     gap: 20px;
     color: black;
     font-size: calc(1.5 * $font-size);
-    @media screen and (max-width: $breakpoint-extra-big) {
-      gap: 10px;
-    }
-    @media screen and (max-width: $breakpoint-tablet) {
-      min-height: 150px;
-    }
+    // @media screen and (max-width: $breakpoint-extra-big) {
+    //   gap: 10px;
+    // }
+    // @media screen and (max-width: $breakpoint-tablet) {
+    //   min-height: 150px;
+    // }
     @media screen and (max-width: $breakpoint-mobile-big) {
-      gap: 5px;
-      min-height: 100px;
+      gap: 10px;
+      min-height: 150px;
     }
   }
 

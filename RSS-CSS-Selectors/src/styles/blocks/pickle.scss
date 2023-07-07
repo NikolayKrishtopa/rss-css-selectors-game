@@ -3,16 +3,12 @@
   width: calc(0.5 * $fruit-size);
   border-radius: calc(0.25 * $fruit-size);
   background-color: green;
-  z-index: 2;
-  @media screen and (max-width: $breakpoint-extra-big) {
-    height: calc(1.2 * $fruit-size);
-    width: calc(0.4 * $fruit-size);
-  }
-  @media screen and (max-width: $breakpoint-tablet) {
-    height: calc(1.1 * $fruit-size);
-    width: calc(0.3 * $fruit-size);
-  }
+
   @media screen and (max-width: $breakpoint-mobile-big) {
+    height: calc(1.2 * $fruit-size);
+    width: calc(0.35 * $fruit-size);
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
     height: calc(0.9 * $fruit-size);
     width: calc(0.2 * $fruit-size);
   }
