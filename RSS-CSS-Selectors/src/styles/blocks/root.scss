@@ -9,4 +9,7 @@
   @media screen and (max-width: $breakpoint-extra-big) {
     grid-template-columns: 3fr 1fr;
   }
+  @media screen and (max-width: $breakpoint-extra-m) {
+    grid-template-columns: 1fr;
+  }
 }

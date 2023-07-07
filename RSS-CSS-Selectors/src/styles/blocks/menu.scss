@@ -1,10 +1,29 @@
-.info {
-  background-color: $dark;
-  padding: 30px;
+.menu {
   display: flex;
+  padding: 30px;
   flex-direction: column;
+  gap: 20px;
+  background-color: $dark;
+  z-index: 1;
   position: relative;
-  gap: 50px;
+
+  @media screen and (max-width: $breakpoint-extra-m) {
+    padding: 20px;
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    gap: 10px;
+  }
+
+  &_state_active {
+    display: flex;
+  }
 
   ::-webkit-scrollbar-track {
     background: var(--white);
@@ -25,33 +44,8 @@
   @media screen and (max-width: $breakpoint-tablet) {
     padding: 10px;
   }
-  &__burger-menu {
-    position: absolute;
-    padding: 30px;
-    flex-direction: column;
-    gap: 20px;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: $dark;
-    z-index: 1;
-    display: none;
 
-    @media screen and (max-width: $breakpoint-extra-m) {
-      padding: 10px;
-    }
-
-    @media screen and (max-width: $breakpoint-tablet) {
-      gap: 10px;
-    }
-
-    &_state_active {
-      display: flex;
-    }
-  }
-
-  &__burger-menu-item {
+  &__item {
     @include clickable;
     display: flex;
     align-items: center;
@@ -69,7 +63,7 @@
     }
   }
 
-  &__burger-menu-item-num {
+  &__item-num {
     font-size: $font-size;
     @media screen and (max-width: $breakpoint-extra-big) {
       font-size: calc(0.7 * $font-size);
@@ -79,13 +73,13 @@
     }
   }
 
-  &__menu-container {
+  &__container {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  &__burger-menu-item-title {
+  &__item-title {
     font-size: $font-size;
     @media screen and (max-width: $breakpoint-extra-big) {
       font-size: calc(0.7 * $font-size);
@@ -100,7 +94,7 @@
     justify-content: space-between;
     align-items: center;
     @media screen and (max-width: $breakpoint-extra-big) {
-      flex-direction: column;
+      flex-direction: column-reverse;
       gap: 20px;
     }
   }
@@ -143,6 +137,12 @@
 
   &__nav-btn {
     @include clickable;
+    &_type_menu {
+      display: none;
+      @media screen and (max-width: $breakpoint-extra-m) {
+        display: block;
+      }
+    }
   }
 
   &__text {

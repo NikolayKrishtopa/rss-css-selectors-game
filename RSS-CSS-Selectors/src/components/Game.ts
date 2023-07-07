@@ -27,7 +27,6 @@ class Game implements IGame {
   incTaskBtn: HTMLButtonElement;
   passed: Array<number>;
   icon: HTMLImageElement;
-  taskDescField: HTMLElement;
   resetBtn: HTMLButtonElement;
   promptUsed: boolean;
   helpBtn: HTMLButtonElement;
@@ -82,9 +81,6 @@ class Game implements IGame {
     this.icon = document.querySelector(
       SELECTORS.TASK_STATUS_ICON
     ) as HTMLImageElement;
-    this.taskDescField = document.querySelector(
-      SELECTORS.TASK_DESC_FIELD
-    ) as HTMLElement;
     this.resetBtn = document.querySelector(
       SELECTORS.RESET_BTN
     ) as HTMLButtonElement;
@@ -200,7 +196,6 @@ class Game implements IGame {
     this.curLvlArea.textContent = this.curTaskNum.toString();
     this.taskDescr.textContent = this.curTaskItem.title;
     this.htmlSyntCodeArea.textContent = this.curTaskItem.syntheticCode;
-    this.taskDescField.textContent = this.curTaskItem.description;
     if (this.passed.includes(this.curTaskItem.id)) {
       this.icon.src = passedIconL;
     } else {

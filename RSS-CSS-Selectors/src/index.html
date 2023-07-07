@@ -20,6 +20,16 @@
     <div class="game">
       <div class="header">
         <h1 class="header__title">CSS dinner</h1>
+        <button
+          class="menu__nav-btn menu__nav-btn_type_menu"
+          id="burgerMenuBtn"
+        >
+          <img
+            src="./assets/img/menu_icon.svg"
+            alt="Menu button."
+            class="menu__icon menu__icon_size_l"
+          />
+        </button>
       </div>
       <h2 class="game__task-annotation">
         Select every apple that's next to a plate
@@ -112,64 +122,55 @@
         </p>
       </footer>
     </div>
-    <div class="info">
-      <div class="info__burger-menu">
-        <div class="info__heading">
-          <h3 class="info__title">Choose a level</h3>
-          <button class="info__nav-btn" id="closeMenuBtn">
-            <img
-              src="./assets/img/close_icon.svg"
-              alt="Close menu."
-              class="info__icon info__icon_size_l"
-            />
-          </button>
-        </div>
-        <div class="info__menu-container"></div>
-        <template id="menuItemTemmplate">
-          <div class="info__burger-menu-item">
-            <img src="./assets/img/check_icon_no_border.svg" alt="check" />
-            <p class="info__burger-menu-item-num"></p>
-            <p class="info__burger-menu-item-title"></p>
-          </div>
-        </template>
-      </div>
-      <div class="info__heading">
-        <h3 class="info__title">
+
+    <div class="menu">
+      <div class="menu__heading">
+        <h3 class="menu__title">
           Level <span id="curLvl"></span> of <span id="totalLvls"></span>
         </h3>
-        <nav class="info__nav">
-          <div class="info__icon info__icon_size_l">
+        <nav class="menu__nav">
+          <div class="menu__icon menu__icon_size_l">
             <img
               src="./assets/img/check_icon.svg"
               alt="check"
               id="taskStatusCheck"
             />
           </div>
-          <button class="info__nav-btn" id="decTaskBtn">
+          <button class="menu__nav-btn" id="decTaskBtn">
             <img
               src="./assets/img/left_icon.svg"
               alt="Previous task button."
-              class="info__icon info__icon_size_l"
+              class="menu__icon menu__icon_size_l"
             />
           </button>
-          <button class="info__nav-btn" id="incTaskBtn">
+          <button class="menu__nav-btn" id="incTaskBtn">
             <img
               src="./assets/img/right_icon.svg"
               alt="Next task button."
-              class="info__icon info__icon_size_l"
+              class="menu__icon menu__icon_size_l"
             />
           </button>
-          <button class="info__nav-btn" id="burgerMenuBtn">
+          <button class="menu__nav-btn" id="closeMenuBtn">
             <img
-              src="./assets/img/menu_icon.svg"
-              alt="Menu button."
-              class="info__icon info__icon_size_l"
+              src="./assets/img/close_icon.svg"
+              alt="Close menu."
+              class="menu__icon menu__icon_size_l"
             />
           </button>
         </nav>
       </div>
-      <p class="info__text"></p>
-      <button class="info__reset-btn">Reset</button>
+      <div class="menu__heading">
+        <h3 class="menu__title">Choose a level</h3>
+      </div>
+      <div class="menu__menu-container"></div>
+      <template id="menuItemTemmplate">
+        <div class="menu__item">
+          <img src="./assets/img/check_icon_no_border.svg" alt="check" />
+          <p class="menu__item-num"></p>
+          <p class="menu__item-title"></p>
+        </div>
+      </template>
+      <button class="menu__reset-btn">Reset</button>
     </div>
   </body>
 </html>
