@@ -1,13 +1,13 @@
 # Minesweeper
 
-<div align="center"><img src='./src/assets/img/screenshot.png' width='400' height='300'/></div>
+<div align="center"><img src='./app-screenshot.png' width='400' height='300'/></div>
 
-### My realization of the world-wide popular [game](https://en.wikipedia.org/wiki/Minesweeper_(video_game)).
+### CSS selectors train.
 
-Developed as a training of native JS (OOP) and alghorytms.
 
 ## The tech stach are:
 - Native JS (OOP)
+- Typescript
 - SASS(SCSS) with the BEM methodology
 - Webpack for dev server and the project build
 
@@ -16,9 +16,6 @@ Developed as a training of native JS (OOP) and alghorytms.
 - npm i to install all the required dependencies
 - npm run dev to start your local dev server.
 
-[Link to the page deploy](https://nikolaykrishtopa.github.io/minesweeper/)
+[Link to the page deploy](https://rolling-scopes-school.github.io/nikolaykrishtopa-JSFE2023Q1/RSS-CSS-Selectors/)
 
-Note: to mark the cells suspended to be armed with a flag you need to use right buton click for desktop of long-press-tap for mobile.
-
-Enjoy!
  
