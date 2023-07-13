@@ -1,6 +1,6 @@
 # RSS CSS selectors
 
-<div align="center"><img src='./app-screenshot.png' width='400' height='300'/></div>
+<div align="center"><img src='./RSS-CSS-Selectors/app-screenshot.png' width='400' height='300'/></div>
 
 ### CSS selectors train.
 
