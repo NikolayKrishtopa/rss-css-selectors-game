@@ -263,6 +263,7 @@ class Game implements IGame {
     this.curTaskItem.correct[0].split('').forEach((e, i) => {
       const timeout = setTimeout(() => {
         this.answerField.value += e;
+        this.checkAnswerBlind();
         clearTimeout(timeout);
       }, 200 * i);
     });
